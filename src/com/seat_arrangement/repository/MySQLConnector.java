@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 // db에 연결 담당
 public abstract class MySQLConnector {
-    //connection 정보
+    // 드라이버 접속 정보
     private String driver = "com.mysql.cj.jdbc.Driver";
     private String url = "jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private String id_mysql = "root";
@@ -14,6 +14,7 @@ public abstract class MySQLConnector {
 
     protected Connection conn = null;
 
+    // 접속
     public void connectMySQL() {
         try {
             Class.forName(driver);
