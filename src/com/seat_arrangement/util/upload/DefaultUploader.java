@@ -1,5 +1,8 @@
 package com.seat_arrangement.util.upload;
 
+import com.seat_arrangement.repository.SeatRepository;
+import com.seat_arrangement.repository.StudentRepository;
+
 import java.util.ArrayList;
 
 public class DefaultUploader extends FileUploader{
@@ -23,7 +26,7 @@ public class DefaultUploader extends FileUploader{
 
         for(String each: list) {
             eachInfo = each.split(INFO_REGEX);
-//			repository.saveStudents(eachInfo[0],eachInfo[1]);
+			StudentRepository.saveStudent(eachInfo[0],eachInfo[1]);
         }
     }
 
@@ -33,7 +36,7 @@ public class DefaultUploader extends FileUploader{
 
         for(String each: list) {
             eachInfo = each.split(INFO_REGEX);
-//			repository.saveSeats(Integer.parseInt(eachInfo[0]),Integer.parseInt(eachInfo[1]));
+			SeatRepository.saveSeat(Integer.parseInt(eachInfo[0]),Integer.parseInt(eachInfo[1]));
         }
     }
 
