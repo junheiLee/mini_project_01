@@ -8,7 +8,6 @@ public class FileUploader {
     private static final String SEAT_DATA_URI = "./src/com/seat_arrangement/util/upload/file/seat_info.txt";
     private static final String INFO_REGEX = ", ";
 
-
     // ArrayList<DTO>에 담아 반환(자리, 수강생)
     public static void loadInfo(){
         loadStudentsInfo(readFile(STUDENT_DATA_URI));
@@ -21,7 +20,7 @@ public class FileUploader {
 
         for(String each: list) {
             eachInfo = each.split(INFO_REGEX);
-//			repository.saveStudents(Integer.parseInt(eachInfo[0]),eachInfo[1],eachInfo[2],Boolean.valueOf(eachInfo[3]));
+//			repository.saveStudents(eachInfo[0],eachInfo[1]);
         }
     }
 
@@ -31,7 +30,7 @@ public class FileUploader {
 
         for(String each: list) {
             eachInfo = each.split(INFO_REGEX);
-//			repository.saveSeats(Integer.parseInt(eachInfo[0]),Integer.parseInt(eachInfo[1]),Integer.parseInt(eachInfo[2]),Boolean.valueOf(eachInfo[3]));
+//			repository.saveSeats(Integer.parseInt(eachInfo[0]),Integer.parseInt(eachInfo[1]));
         }
     }
 
