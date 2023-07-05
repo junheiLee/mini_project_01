@@ -32,11 +32,11 @@ public class StudentRepository extends SQLClass{
     }
 
     // 학생 데이터 저장 - init() 에 사용
-    public static void saveStudent(String name, String mbti) {
+    public static void save(String name, String mbti) {
         try {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setString(1, name);
-            pstmt.setString(1, mbti);
+            pstmt.setString(2, mbti);
             rs = pstmt.executeQuery();
 
         } catch (SQLException e) {

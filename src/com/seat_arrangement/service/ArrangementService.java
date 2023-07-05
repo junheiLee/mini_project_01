@@ -5,8 +5,9 @@ import com.seat_arrangement.DTO.StudentDTO;
 
 import java.util.ArrayList;
 
+
 public interface ArrangementService {
 
-    ArrayList<StudentDTO> arrangeStudent();
-    ArrayList<SeatDTO> arrangeSeat();
+    ArrayList<Integer> arrangeStudent(ArrayList<Integer> ids);
+    ArrayList<Integer> arrangeSeat(ArrayList<Integer> ids);
 }

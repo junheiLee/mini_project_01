@@ -28,11 +28,11 @@ public class SeatRepository extends SQLClass{
     }
 
     // 자리 데이터 저장 - init() 에 사용
-    public static void saveSeat(int row, int column) {
+    public static void save(int row, int column) {
         try {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setInt(1, row);
-            pstmt.setInt(1, column);
+            pstmt.setInt(2, column);
             rs = pstmt.executeQuery();
 
         } catch (SQLException e) {

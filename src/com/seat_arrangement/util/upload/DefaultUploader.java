@@ -26,7 +26,7 @@ public class DefaultUploader extends FileUploader{
 
         for(String each: list) {
             eachInfo = each.split(INFO_REGEX);
-			StudentRepository.saveStudent(eachInfo[0],eachInfo[1]);
+			StudentRepository.save(eachInfo[0],eachInfo[1]);
         }
     }
 
@@ -36,7 +36,7 @@ public class DefaultUploader extends FileUploader{
 
         for(String each: list) {
             eachInfo = each.split(INFO_REGEX);
-			SeatRepository.saveSeat(Integer.parseInt(eachInfo[0]),Integer.parseInt(eachInfo[1]));
+			SeatRepository.save(Integer.parseInt(eachInfo[0]),Integer.parseInt(eachInfo[1]));
         }
     }
 
