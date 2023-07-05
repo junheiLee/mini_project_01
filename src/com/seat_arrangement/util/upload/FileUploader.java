@@ -12,6 +12,7 @@ public class FileUploader <T> {
 
     private static final String STUDENT_DATA_URI = "./file/student_info.txt";
     private static final String SEAT_DATA_URI = "./file/seat_info.txt";
+    private static final String REGEX = ", ";
 
 
     // 기본 정보 db에 load
@@ -25,7 +26,7 @@ public class FileUploader <T> {
         String[] eachInfo;
 
         for(String each: list) {
-            eachInfo = each.split(", ");
+            eachInfo = each.split(REGEX);
 //			repository.saveStudents(Integer.parseInt(eachInfo[0]),eachInfo[1],eachInfo[2],Boolean.valueOf(eachInfo[3]));
         }
     }
@@ -35,7 +36,7 @@ public class FileUploader <T> {
         String[] eachInfo;
 
         for(String each: list) {
-            eachInfo = each.split(", ");
+            eachInfo = each.split(REGEX);
 //			repository.saveSeats(Integer.parseInt(eachInfo[0]),Integer.parseInt(eachInfo[1]),Integer.parseInt(eachInfo[2]),Boolean.valueOf(eachInfo[3]));
         }
     }
