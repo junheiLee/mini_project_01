@@ -10,6 +10,6 @@ public class SeatArrangement {
     public static void main(String[] args) {
         // 프로그램 실행
         controller.run();
-        FileUploader.loadInfo();
+//        FileUploader.loadInfo();
     }
 }
