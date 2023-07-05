@@ -1,4 +1,4 @@
-package com.seat_arrangement.util.SeatColumn;
+package com.seat_arrangement.util.column;
 
 public abstract class StudentColumn {
 

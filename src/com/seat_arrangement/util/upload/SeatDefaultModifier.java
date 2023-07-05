@@ -2,14 +2,14 @@ package com.seat_arrangement.util.upload;
 
 import java.util.ArrayList;
 
-import static com.seat_arrangement.util.SeatColumn.SeatColumn.IS_USED;
+import static com.seat_arrangement.util.column.SeatColumn.IS_USED;
 
 public class SeatDefaultModifier extends FileUploader{
     private static final String NOT_USED_DATA_URI = "/supplement/seat_not_used_row_column.text";
     private static final boolean NOT_USED = false;
     private static String INFO_REGEX = ", ";
 
-    public static void loadInfo() {
+    public static void modifyInfo() {
         modify(readFile(NOT_USED_DATA_URI), IS_USED);
 
     }

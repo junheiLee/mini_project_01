@@ -2,7 +2,7 @@ package com.seat_arrangement.util.upload;
 
 import java.util.ArrayList;
 
-import static com.seat_arrangement.util.SeatColumn.StudentColumn.*;
+import static com.seat_arrangement.util.column.StudentColumn.*;
 
 public class StudentDefaultModifier extends FileUploader {
 
@@ -13,7 +13,7 @@ public class StudentDefaultModifier extends FileUploader {
     }
 
     // 흡연 여부, 수료중 여부 default 값 총 변경
-    public static void loadInfo() {
+    public static void modifyInfo() {
         modify(STUDENT_ID, readFile(IS_SMOKER_ID_DATA_URI), IS_SMOKER, true);
         modify(STUDENT_ID, readFile(NOT_IN_PROGRESS_ID_DATA_URI), IS_IN_PROGRESS, false);
     }
