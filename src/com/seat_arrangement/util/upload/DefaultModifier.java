@@ -20,26 +20,26 @@ public class DefaultModifier extends FileUploader{
     }
 
     // update student set isSmoker = true where studentId = ?"
-    // "update student set " + modifyColumn + " = " + modifyInfo + " where " + targetColumn + " = " + each
+    // "update student set " + modifyColumnToInfo + " where " + targetColumn + " = " + each
     private static void modifyStudentBooleanInfo( String targetColumn,
                                                   ArrayList<String> targetLst,
                                                   String modifyColumn,
                                                   boolean modifyInfo){
-
+        String sql = "update student set " + modifyColumn + " = ? where "+ targetColumn + " = ?";
         for(String each: targetLst) {
-//			studentRepository.modify(targetColumn, each, modifyColumn, modifyInfo);
+//			studentRepository.modify(sql, each, modifyInfo);
         }
     }
 
-//    // update seat set isUsed = false where row = ? and column = ?"
-//    // "update seat set " + modifyColumn + " = " + modifyInfo + " where " + targetColumn + " = " + each
-//    private static void modifySeatDefaultInfo(String[] targetColumn,ArrayList<String> targetLst, String modifyColumn, boolean modifyInfo){
-//        String[] eachInfo;
-//
-//        for(String each: targetLst) {
-//            eachInfo = each.split(INFO_REGEX);
-////			seatRepository.modifyByProcession(targetColumn[0], targetColumn[1], eachInfo[0], eachInfo[1], columnName, modifyInfo);
-//        }
-//    }
+    // update seat set isUsed = false where row = ? and column = ?"
+    // "update seat set " + modifyColumn + " = " + modifyInfo + " where " + targetColumn + " = " + each
+    private static void modifySeatDefaultInfo(String[] targetColumn,ArrayList<String> targetLst, String modifyColumn, boolean modifyInfo){
+        String[] eachInfo;
+
+        for(String each: targetLst) {
+            eachInfo = each.split(INFO_REGEX);
+//			seatRepository.modifyByProcession(targetColumn[0], targetColumn[1], eachInfo[0], eachInfo[1], columnName, modifyInfo);
+        }
+    }
 }
 
