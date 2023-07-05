@@ -5,4 +5,36 @@ public class StudentDTO {
     private String name;
     private String mbti;
     private boolean isSmoker;
+
+    public int getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getMbti() {
+        return mbti;
+    }
+
+    public void setMbti(String mbti) {
+        this.mbti = mbti;
+    }
+
+    public boolean isSmoker() {
+        return isSmoker;
+    }
+
+    public void setSmoker(boolean smoker) {
+        isSmoker = smoker;
+    }
 }
