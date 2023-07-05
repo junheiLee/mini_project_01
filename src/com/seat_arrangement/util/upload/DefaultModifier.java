@@ -19,7 +19,7 @@ public class DefaultModifier extends FileUploader{
 //        modifySeatDefaultInfo(readFile(SEAT_NOT_USED_DATA_URI), "isUsed", );
     }
 
-    // update student set isSmoker = true where studentId = ?"
+    // update student set isSmoker = true where studentId = ?
     // "update student set " + modifyColumnToInfo + " where " + targetColumn + " = " + each
     private static void modifyStudentBooleanInfo( String targetColumn,
                                                   ArrayList<String> targetLst,
@@ -31,14 +31,15 @@ public class DefaultModifier extends FileUploader{
         }
     }
 
-    // update seat set isUsed = false where row = ? and column = ?"
-    // "update seat set " + modifyColumn + " = " + modifyInfo + " where " + targetColumn + " = " + each
-    private static void modifySeatDefaultInfo(String[] targetColumn,ArrayList<String> targetLst, String modifyColumn, boolean modifyInfo){
-        String[] eachInfo;
+    // update seat set isUsed = false where row = ? and column = ?
+    // 추후 수정 필요
+    private static void modifySeatDefaultInfoByProcession(ArrayList<String> targetLst, String modifyColumn, boolean modifyInfo){
+        String[] eachTargetInfo;
 
+        String sql = "update seat set " + modifyColumn + " = ? where row = ? and column = ?";
         for(String each: targetLst) {
-            eachInfo = each.split(INFO_REGEX);
-//			seatRepository.modifyByProcession(targetColumn[0], targetColumn[1], eachInfo[0], eachInfo[1], columnName, modifyInfo);
+            eachTargetInfo = each.split(INFO_REGEX);
+//			seatRepository.modify(sql, eachTargetInfo[0], eachTargetInfo[1], modifyInfo);
         }
     }
 }
