@@ -1,4 +1,4 @@
-package com.seat_arrangement.util;
+package com.seat_arrangement.util.upload;
 
 // 파일에서 수강생 목록 업데이트 담당
 public class FileUploader {
