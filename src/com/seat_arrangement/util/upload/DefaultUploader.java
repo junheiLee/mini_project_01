@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class DefaultUploader extends FileUploader{
 
-    private static final String STUDENT_DATA_URI = FileUploader.LOCATION + "/default/student_data.txt";
-    private static final String SEAT_DATA_URI = FileUploader.LOCATION + "/default/seat_data.txt";
+    private static final String STUDENT_DATA_URI = "/default/student_data.txt";
+    private static final String SEAT_DATA_URI = "/default/seat_data.txt";
 
     public DefaultUploader(){
     }
