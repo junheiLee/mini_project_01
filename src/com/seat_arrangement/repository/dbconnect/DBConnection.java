@@ -12,8 +12,8 @@ public abstract class DBConnection {
 
     //URL -> "jdbc:mariadb://localhost:3306/dbName" hdh.ver
     private final static String URL = "jdbc:mysql://localhost:3306/"
-                                        + DB_NAME
-                                        +"?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+            + DB_NAME
+            + "?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private final static String USERNAME = "root";
     private final static String PASSWORD = "qlalf79";
 
@@ -32,12 +32,12 @@ public abstract class DBConnection {
         } catch (ClassNotFoundException e) {
             System.out.println("Driver err! : " + e.getMessage());
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Connection err! : " + e.getMessage());
         }
     }
 
-    protected static void close(Statement stmt, ResultSet rs){
+    protected static void close(Statement stmt, ResultSet rs) {
 
         if (rs != null) {
             try {
@@ -47,7 +47,7 @@ public abstract class DBConnection {
             }
         }
 
-        if( stmt != null) {
+        if (stmt != null) {
             try {
                 stmt.close();
             } catch (SQLException e) {

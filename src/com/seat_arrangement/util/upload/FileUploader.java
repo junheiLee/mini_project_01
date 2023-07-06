@@ -15,14 +15,14 @@ public abstract class FileUploader {
     protected static ArrayList<String> readFile(String uri) {
         ArrayList<String> list = new ArrayList<>();
 
-        FileReader fr = null;
-        BufferedReader br = null;
+        FileReader fr;
+        BufferedReader br;
 
         try {
             fr = new FileReader(LOCATION + uri);
             br = new BufferedReader(fr);
 
-            String temp = "";
+            String temp;
             while ((temp = br.readLine()) != null) {
                 list.add(temp);
             }

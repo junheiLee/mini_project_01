@@ -52,7 +52,7 @@ public class SeatArrangementController {
 
     // 결원과 사용하지 않는 자리 매핑해 총 결과값으로 변경 (모든 배치 방법에 필수)
     // 결원 id = 0 취급
-    private void setUnused(){
+    private void setUnused() {
         ArrayList<Integer> unusedSeats = seatRepo.findAllNotUsedId();
         for (int i = 0; i < unusedSeats.size(); i++) {
             this.arrangedStudents.add(0);

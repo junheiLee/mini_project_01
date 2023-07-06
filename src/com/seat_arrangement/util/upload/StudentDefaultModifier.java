@@ -26,7 +26,7 @@ public class StudentDefaultModifier extends FileUploader {
                                String targetColumn,
                                ArrayList<String> targetList) {
         for (String each : targetList) {
-			StudentRepository.modify(modifyColumn, modifyInfo, targetColumn, Integer.parseInt(each));
+            StudentRepository.modify(modifyColumn, modifyInfo, targetColumn, Integer.parseInt(each));
         }
     }
 

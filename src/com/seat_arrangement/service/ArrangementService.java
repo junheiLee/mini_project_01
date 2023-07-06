@@ -9,6 +9,7 @@ import java.util.Map;
 public abstract class ArrangementService {
 
     abstract ArrayList<Integer> arrangeStudent(ArrayList<Integer> ids);
+
     abstract ArrayList<Integer> arrangeSeat(ArrayList<Integer> ids);
 
     public ArrayList<Integer> sortBySeat(Map<Integer, Integer> arrangements) {
