@@ -1,8 +1,11 @@
 package com.seat_arrangement.util.upload;
 
-import java.util.ArrayList;
+import com.seat_arrangement.repository.SeatRepository;
 
-import static com.seat_arrangement.util.column.SeatColumn.IS_USED;
+import java.util.ArrayList;
+import java.util.stream.Stream;
+
+import static com.seat_arrangement.util.column.SeatColumn.*;
 
 public class SeatDefaultModifier extends FileUploader{
     private static final String NOT_USED_DATA_URI = "/supplement/seat_not_used_row_column.text";
@@ -10,19 +13,19 @@ public class SeatDefaultModifier extends FileUploader{
     private static String INFO_REGEX = ", ";
 
     public static void modifyInfo() {
-        modify(readFile(NOT_USED_DATA_URI), IS_USED);
+        modifyIsUsedByRowAndColumn(readFile(NOT_USED_DATA_URI));
 
     }
 
-    // update seat set isUsed = false where row = ? and column = ?
-    // 추후 수정 필요
-    private static void modify(ArrayList<String> targetLst, String modifyColumn) {
-        String[] eachTargetInfo;
+    // 행, 열 기준으로 수정할 콜럼 수정
+    private static void modifyIsUsedByRowAndColumn(ArrayList<String> targetLst) {
+        String[] targetColumn = {ROW, COLUMN};
+        Integer[] targetValue;
 
-        String sql = "update seat set " + modifyColumn + " = ? where row = ? and column = ?";
         for (String each : targetLst) {
-            eachTargetInfo = each.split(INFO_REGEX);
-//			seatRepository.modify(sql, eachTargetInfo[0], eachTargetInfo[1], NOT_USED);
+            targetValue = Stream.of(each.split(INFO_REGEX)).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+			SeatRepository.modify(IS_USED, NOT_USED, targetColumn, targetValue);     // update seat set ? = ? where ? = ? and ? = ?
+
         }
     }
 }
