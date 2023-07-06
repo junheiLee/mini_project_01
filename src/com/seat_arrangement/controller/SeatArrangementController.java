@@ -1,50 +1,54 @@
 package com.seat_arrangement.controller;
 
 
-import com.seat_arrangement.repository.ArrangementRepository;
-import com.seat_arrangement.repository.SeatRepository;
-import com.seat_arrangement.repository.StudentRepository;
+import com.seat_arrangement.repository.*;
 import com.seat_arrangement.repository.dbconnect.DBConnection;
 import com.seat_arrangement.service.RandomArrangementService;
-import com.seat_arrangement.util.upload.DefaultUploader;
-import com.seat_arrangement.util.upload.SeatDefaultModifier;
-import com.seat_arrangement.util.upload.StudentDefaultModifier;
+import com.seat_arrangement.util.upload.*;
 
 import java.util.ArrayList;
 
+import static com.seat_arrangement.util.ArrangeInfo.TODAY;
+
 public class SeatArrangementController {
 
-    private final RandomArrangementService randomService = new RandomArrangementService();
+    private final RandomArrangementService service = new RandomArrangementService();
 
-    private final ArrangementRepository arrangements = new ArrangementRepository();
-    private final StudentRepository students = new StudentRepository();
-    private final SeatRepository seats = new SeatRepository();
+    private final ArrangementRepository arrangementRepo = new ArrangementRepository();
+    private final StudentRepository studentRepo = new StudentRepository();
+    private final SeatRepository seatRepo = new SeatRepository();
 
-    private ArrayList<Integer> studentIds;
-    private ArrayList<Integer> seatIds;
+    private ArrayList<Integer> arrangedStudents;
+    private ArrayList<Integer> arrangedSeats;
+    private ArrayList<Integer> sortedStudentIds;
 
     //전체 코드 실행
-    public void run(){
+    public void run() {
         DBConnection.getConnection();
         initInfo();
-        arrangeRandom();
+        arrange();
 
     }
 
     // 학생, 자리 정보 초기화
-    private void initInfo(){
+    private void initInfo() {
         DefaultUploader.loadInfo();
 
         StudentDefaultModifier.modifyInfo();
         SeatDefaultModifier.modifyInfo();
     }
 
-    private void arrangeRandom(){
-        this.studentIds = randomService.arrangeStudent(students.findAllUsedId());
-        this.seatIds = randomService.arrangeSeat(seats.findAllUsedId());
+    private void arrange() {
+        this.arrangedStudents = service.arrangeStudent(studentRepo.findAllUsedId());
+        this.arrangedSeats = service.arrangeSeat(seatRepo.findAllUsedId());
 
-        for(int idx = 0; idx < studentIds.size(); idx ++) {
-            arrangements.save(seatIds.get(idx), studentIds.get(idx));
+        for (int idx = 0; idx < arrangedStudents.size(); idx++) {
+            arrangementRepo.save(arrangedSeats.get(idx), arrangedStudents.get(idx));
         }
+    }
+
+    private void createHTML() {
+        this.sortedStudentIds = service.sortBySeat(arrangementRepo.findByDate(TODAY));
+
     }
 }
