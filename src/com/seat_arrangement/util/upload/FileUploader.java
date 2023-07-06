@@ -1,11 +1,15 @@
 package com.seat_arrangement.util.upload;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 // FileReader, BufferedReader
 public abstract class FileUploader {
     protected static final String LOCATION = "./src/com/seat_arrangement/util/upload/datafile";
+    protected static final String INFO_REGEX = ", ";
 
     @SuppressWarnings("finally")
     protected static ArrayList<String> readFile(String uri) {
