@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 import static com.seat_arrangement.util.column.SeatColumn.*;
 
-public class SeatDefaultModifier extends FileUploader{
+public class SeatDefaultModifier extends FileUploader {
     private static final String NOT_USED_DATA_URI = "/supplement/seat_not_used_row_column.txt";
     private static final boolean NOT_USED = false;
 
@@ -23,7 +23,7 @@ public class SeatDefaultModifier extends FileUploader{
 
         for (String each : targetLst) {
             targetValue = Stream.of(each.split(INFO_REGEX)).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
-			SeatRepository.modify(IS_USED, NOT_USED, targetColumn, targetValue);     // update seat set ? = ? where ? = ? and ? = ?
+            SeatRepository.modify(IS_USED, NOT_USED, targetColumn, targetValue);     // update seat set ? = ? where ? = ? and ? = ?
 
         }
     }

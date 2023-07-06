@@ -20,14 +20,14 @@ public class SeatArrangementController {
 
     private ArrayList<Integer> arrangedStudents;
     private ArrayList<Integer> arrangedSeats;
-    private ArrayList<Integer> sortedStudentIds;
+    private ArrayList<Integer> sortedStudentIds; // HTML 배치에 쓰일 실제 36좌석 배치 List
 
     //전체 코드 실행
     public void run() {
         DBConnection.getConnection();
         initInfo();
         arrange();
-
+        createHTML();
     }
 
     // 학생, 자리 정보 초기화
@@ -47,11 +47,12 @@ public class SeatArrangementController {
         for (int idx = 0; idx < arrangedStudents.size(); idx++) {
             arrangementRepo.save(this.arrangedSeats.get(idx), this.arrangedStudents.get(idx));
         }
+        this.sortedStudentIds = service.sortBySeat(arrangementRepo.findByDate(TODAY));
     }
 
-    // 결원과 사용하지 않는 자리 매핑해 총 결과값으로 변경
+    // 결원과 사용하지 않는 자리 매핑해 총 결과값으로 변경 (모든 배치 방법에 필수)
     // 결원 id = 0 취급
-    private void setUnused(){
+    private void setUnused() {
         ArrayList<Integer> unusedSeats = seatRepo.findAllNotUsedId();
         for (int i = 0; i < unusedSeats.size(); i++) {
             this.arrangedStudents.add(0);
@@ -61,7 +62,7 @@ public class SeatArrangementController {
 
 
     private void createHTML() {
-        this.sortedStudentIds = service.sortBySeat(arrangementRepo.findByDate(TODAY));
+
 
     }
 }

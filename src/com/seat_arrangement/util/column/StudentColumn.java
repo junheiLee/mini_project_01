@@ -6,5 +6,4 @@ public abstract class StudentColumn {
     public static final String MBTI = "mbti";
     public static final String IS_SMOKER = "isSmoker";
     public static final String IS_IN_PROGRESS = "isInProgress";
-
 }

@@ -10,10 +10,11 @@ public class SeatRepository extends SQLClass {
     private static final String INSERT_ALL = "insert into seat (seatRow, seatColumn) values (?, ?)";
     private static final String UPDATE_BY_PROCESSION = "update seat set isUsed = ? where seatRow = ? and seatColumn = ?";
 
-    public ArrayList<Integer> findAllUsedId(){
+    public ArrayList<Integer> findAllUsedId() {
         return super.findAllId(SELECT_ALL_USED_ID);
     }
-    public ArrayList<Integer> findAllNotUsedId(){
+
+    public ArrayList<Integer> findAllNotUsedId() {
         return super.findAllId(SELECT_ALL_NOT_USED_ID);
     }
 
