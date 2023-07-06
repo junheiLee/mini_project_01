@@ -4,6 +4,7 @@ package com.seat_arrangement.controller;
 import com.seat_arrangement.repository.ArrangementRepository;
 import com.seat_arrangement.repository.SeatRepository;
 import com.seat_arrangement.repository.StudentRepository;
+import com.seat_arrangement.repository.dbconnect.DBConnection;
 import com.seat_arrangement.service.RandomArrangementService;
 import com.seat_arrangement.util.upload.DefaultUploader;
 import com.seat_arrangement.util.upload.SeatDefaultModifier;
@@ -24,6 +25,7 @@ public class SeatArrangementController {
 
     //전체 코드 실행
     public void run(){
+        DBConnection.getConnection();
         initInfo();
         arrangeRandom();
 

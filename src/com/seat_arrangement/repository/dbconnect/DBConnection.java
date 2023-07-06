@@ -8,7 +8,7 @@ public abstract class DBConnection {
     private final static String DB_NAME = "mini_project_01";
 
     //DRIVER -> "org.mariadb.jdbc.Driver" hdh.ver
-    private final static String DRIVER = "";
+    private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
 
     //URL -> "jdbc:mariadb://localhost:3306/dbName" hdh.ver
     private final static String URL = "jdbc:mysql://localhost:3306/"
@@ -20,10 +20,10 @@ public abstract class DBConnection {
     protected static Connection conn = null;
 
     public DBConnection() {
-        this.getConnection();
+
     }
 
-    protected void getConnection() {
+    public static void getConnection() {
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class StudentRepository extends SQLClass {
     private static final String SELECT_ALL_ID = "select studentId from student";
-    private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + "where isUsed = true";
+    private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isUsed = true";
     private static final String INSERT_ALL = "insert into student (studentName, mbti) values (?, ?)";
     private static final String MODIFY_BY_ID = "update student set ? = ? where ? = ?";
 
@@ -36,16 +36,15 @@ public class StudentRepository extends SQLClass {
     // 학생 데이터 수정 - init() - modify() 에 사용
     public static void modify(String modifyColumn, boolean modifyInfo, String targetColumn, int targetValue) {
         try {
-            pstmt = conn.prepareStatement(MODIFY_BY_ID);
-            pstmt.setString(1, modifyColumn);
-            pstmt.setBoolean(2, !modifyInfo);
-            pstmt.setString(3, targetColumn);
-            pstmt.setInt(4, targetValue);
+            pstmt = conn.prepareStatement("update student set " + modifyColumn + " = ? where " + targetColumn + " = ?");
+            pstmt.setBoolean(1, modifyInfo);
+            pstmt.setInt(2, targetValue);
+
             pstmt.executeUpdate();
 
 
         } catch (SQLException e) {
-            System.out.println();
+            System.out.println(MODIFY_BY_ID + "Error -> " + e.getMessage());
         }
     }
 
