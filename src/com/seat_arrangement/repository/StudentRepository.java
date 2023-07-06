@@ -3,8 +3,9 @@ package com.seat_arrangement.repository;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StudentRepository extends SQLClass{
+public class StudentRepository extends SQLClass {
     private static final String SELECT_ALL_ID = "select studentId from student";
+    private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + "where isUsed = true";
     private static final String INSERT_ALL = "insert into student (studentName, mbti) values (?, ?)";
     private static final String MODIFY_BY_ID = "update student set ? = ? where ? = ?";
 
@@ -13,24 +14,8 @@ public class StudentRepository extends SQLClass{
     }
 
     // 모든 학생 id 반환
-    public ArrayList<Integer> findAllId(){
-        ArrayList<Integer> studentIds = new ArrayList<>();
-        try {
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(SELECT_ALL_ID);
-
-            while(rs.next()) {
-                studentIds.add(rs.getInt(1));
-            }
-            return studentIds;
-
-        } catch (SQLException e) {
-            System.out.println(SELECT_ALL_ID + " Error -> " + e.getMessage());
-        }finally {
-            close(stmt, rs);
-        }
-        return studentIds;
-
+    public ArrayList<Integer> findAllUsedId() {
+        return super.findAllId(SELECT_ALL_USED_ID);
     }
 
     // 학생 데이터 저장 - init() 에 사용

@@ -38,8 +38,8 @@ public class SeatArrangementController {
     }
 
     private void arrangeRandom(){
-        this.studentIds = randomService.arrangeStudent(students.findAllId());
-        this.seatIds = randomService.arrangeSeat(seats.findAllId());
+        this.studentIds = randomService.arrangeStudent(students.findAllUsedId());
+        this.seatIds = randomService.arrangeSeat(seats.findAllUsedId());
 
         for(int idx = 0; idx < studentIds.size(); idx ++) {
             arrangements.save(seatIds.get(idx), studentIds.get(idx));

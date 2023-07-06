@@ -3,6 +3,7 @@ package com.seat_arrangement.repository;
 import com.seat_arrangement.repository.dbconnect.DBConnection;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import static com.seat_arrangement.util.column.StudentColumn.*;
 
@@ -30,6 +31,26 @@ public abstract class SQLClass extends DBConnection {
         } finally {
             close(stmt, rs);
         }
+    }
+
+    // 모든 id 반환
+    public ArrayList<Integer> findAllId(String sql) {
+        ArrayList<Integer> seatIds = new ArrayList<>();
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                seatIds.add(rs.getInt(1));
+            }
+            return seatIds;
+
+        } catch (SQLException e) {
+            System.out.println(sql + " Error -> " + e.getMessage());
+        } finally {
+            close(stmt, rs);
+        }
+        return seatIds;
     }
 
     //"select *from student where studentId=?"

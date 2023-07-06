@@ -5,27 +5,12 @@ import java.util.ArrayList;
 
 public class SeatRepository extends SQLClass {
     private static final String SELECT_ALL_ID = "select seatId from seat";
+    private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isInProgress = true";
     private static final String INSERT_ALL = "insert into seat (seatRow, seatColumn) values (?, ?)";
     private static final String UPDATE_BY_PROCESSION = "update seat set ? = ? where ? = ? and ? = ?";
 
-    // 모든 자리 id 반환
-    public ArrayList<Integer> findAllId() {
-        ArrayList<Integer> seatIds = new ArrayList<>();
-        try {
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(SELECT_ALL_ID);
-
-            while (rs.next()) {
-                seatIds.add(rs.getInt(1));
-            }
-            return seatIds;
-
-        } catch (SQLException e) {
-            System.out.println(SELECT_ALL_ID + " Error -> " + e.getMessage());
-        } finally {
-            close(stmt, rs);
-        }
-        return seatIds;
+    public ArrayList<Integer> findAllUsedId(){
+        return super.findAllId(SELECT_ALL_USED_ID);
     }
 
     // 자리 데이터 저장 - init() 에 사용
