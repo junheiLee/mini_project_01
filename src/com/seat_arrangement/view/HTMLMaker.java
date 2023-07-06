@@ -9,9 +9,8 @@ import java.util.ArrayList;
 public class HTMLMaker extends HTMLTag{
 
     private final static String URL = System.getProperty("user.dir") + "/src/com/seat_arrangement/util/";
+    private static final File seat_arrangement = new File("seat_arrangement.html");
     private static String content ="";
-    private static File seat_arrangement = new File("seat_arrangement.html");
-
 
     public static void save() {
         FileWriter fw = null;
