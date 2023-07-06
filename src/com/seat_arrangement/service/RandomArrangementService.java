@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Map;
 
 // 랜덤으로 자리 배치하기
-public class RandomArrangementService implements ArrangementService{
+public class RandomArrangementService extends ArrangementService{
 
     // 학생 list 랜덤으로 섞은 정렬 반환
     @Override
@@ -21,16 +21,5 @@ public class RandomArrangementService implements ArrangementService{
         return ids;
     }
 
-    @Override
-    public ArrayList<Integer> sortBySeat(Map<Integer, Integer> arrangements) {
-        ArrayList<Integer> sortedStudents = new ArrayList<>();
-        ArrayList<Integer> keySet = new ArrayList<>(arrangements.keySet());
-        Collections.sort(keySet);
-
-        for (Integer seatIdx : keySet) {
-            sortedStudents.add(arrangements.get(seatIdx));
-        }
-        return sortedStudents;
-    }
 
 }
