@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class SeatRepository extends SQLClass {
     private static final String SELECT_ALL_ID = "select seatId from seat";
-    private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isInProgress = true";
+    private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isUsed = true";
     private static final String INSERT_ALL = "insert into seat (seatRow, seatColumn) values (?, ?)";
     private static final String UPDATE_BY_PROCESSION = "update seat set isUsed = ? where seatRow = ? and seatColumn = ?";
 
@@ -32,10 +32,10 @@ public class SeatRepository extends SQLClass {
     // update seat set ? = ? where ? = ? and ? = ?
     public static void modify(String modifyColumn, boolean modifyValue, String[] targetColumn, Integer[] targetValue) {
         try {
-            String query = "update seat set " + modifyColumn
+            String sql = "update seat set " + modifyColumn
                     + " = ? where " + targetColumn[0]
                     + " = ? and " + targetColumn[1] + " = ?";
-            pstmt = conn.prepareStatement(query);
+            pstmt = conn.prepareStatement(sql);
             pstmt.setBoolean(1, modifyValue);
 
             pstmt.setInt(2, targetValue[0]);
