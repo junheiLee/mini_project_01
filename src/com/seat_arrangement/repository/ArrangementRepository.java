@@ -29,7 +29,7 @@ public class ArrangementRepository extends SQLClass{
 
 
     // 해당 날짜의 자리 배치 정보 저장
-    public static void save(int seatId, int studentId) {
+    public void save(int seatId, int studentId) {
         try {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setInt(1, seatId);

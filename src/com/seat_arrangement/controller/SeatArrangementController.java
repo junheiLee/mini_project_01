@@ -13,11 +13,11 @@ import java.util.ArrayList;
 
 public class SeatArrangementController {
 
-    private RandomArrangementService randomService = new RandomArrangementService();
+    private final RandomArrangementService randomService = new RandomArrangementService();
 
-    private ArrangementRepository arrangements = new ArrangementRepository();
-    private StudentRepository students = new StudentRepository();
-    private SeatRepository seats = new SeatRepository();
+    private final ArrangementRepository arrangements = new ArrangementRepository();
+    private final StudentRepository students = new StudentRepository();
+    private final SeatRepository seats = new SeatRepository();
 
     private ArrayList<Integer> studentIds;
     private ArrayList<Integer> seatIds;

@@ -2,10 +2,14 @@ package com.seat_arrangement.repository;
 
 import com.seat_arrangement.repository.dbconnect.DBConnection;
 
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
-import static com.seat_arrangement.util.column.StudentColumn.*;
+import static com.seat_arrangement.util.column.StudentColumn.MBTI;
+import static com.seat_arrangement.util.column.StudentColumn.STUDENT_NAME;
 
 
 public abstract class SQLClass extends DBConnection {

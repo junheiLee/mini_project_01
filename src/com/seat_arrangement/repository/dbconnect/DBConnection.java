@@ -4,16 +4,20 @@ import java.sql.*;
 
 // db connection에 필요한 상수 모음
 public abstract class DBConnection {
+    //db명
+    private final static String DB_NAME = "mini_project_01";
 
     //DRIVER -> "org.mariadb.jdbc.Driver" hdh.ver
     private final static String DRIVER = "";
 
     //URL -> "jdbc:mariadb://localhost:3306/dbName" hdh.ver
-    private final static String URL = "jdbc:mysql://localhost/~/";
+    private final static String URL = "jdbc:mysql://localhost:3306/"
+                                        + DB_NAME
+                                        +"?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private final static String USERNAME = "root";
-    private final static String PASSWORD = "";
+    private final static String PASSWORD = "qlalf79";
 
-    public static Connection conn = null;
+    protected static Connection conn = null;
 
     public DBConnection() {
         this.getConnection();
@@ -22,8 +26,7 @@ public abstract class DBConnection {
     protected void getConnection() {
         try {
             Class.forName(DRIVER);
-            conn = DriverManager.getConnection(URL);
-
+            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             System.out.println("Connect success!");
 
         } catch (ClassNotFoundException e) {
