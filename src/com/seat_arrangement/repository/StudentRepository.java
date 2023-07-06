@@ -24,7 +24,7 @@ public class StudentRepository extends SQLClass {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setString(1, name);
             pstmt.setString(2, mbti);
-            rs = pstmt.executeQuery();
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(INSERT_ALL + " Error -> " + e.getMessage());
@@ -41,6 +41,8 @@ public class StudentRepository extends SQLClass {
             pstmt.setBoolean(2, !modifyInfo);
             pstmt.setString(3, targetColumn);
             pstmt.setInt(4, targetValue);
+            pstmt.executeUpdate();
+
 
         } catch (SQLException e) {
             System.out.println();

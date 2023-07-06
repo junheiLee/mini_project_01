@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 // FileReader, BufferedReader
 public abstract class FileUploader {
-    protected static final String LOCATION = "./src/com/seat_arrangement/util/upload/datafile";
-    protected static final String INFO_REGEX = ", ";
+    protected static final String LOCATION = System.getProperty("user.dir") + "/com/seat_arrangement/util/upload/datafile";
+    protected static final String INFO_REGEX = ",";
 
     @SuppressWarnings("finally")
     protected static ArrayList<String> readFile(String uri) {
@@ -19,7 +19,7 @@ public abstract class FileUploader {
         BufferedReader br = null;
 
         try {
-            fr = new FileReader(LOCATION + uri);
+            fr = new FileReader(uri);
             br = new BufferedReader(fr);
 
             String temp = "";

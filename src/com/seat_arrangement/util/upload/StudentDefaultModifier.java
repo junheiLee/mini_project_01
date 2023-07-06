@@ -16,16 +16,16 @@ public class StudentDefaultModifier extends FileUploader {
 
     // 흡연 여부, 수료중 여부 default 값 총 변경
     public static void modifyInfo() {
-        modify(STUDENT_ID, readFile(IS_SMOKER_ID_DATA_URI), IS_SMOKER, true);
-        modify(STUDENT_ID, readFile(NOT_IN_PROGRESS_ID_DATA_URI), IS_IN_PROGRESS, false);
+        modify(IS_SMOKER, true, STUDENT_ID, readFile(IS_SMOKER_ID_DATA_URI));
+        modify(IS_IN_PROGRESS, false, STUDENT_ID, readFile(NOT_IN_PROGRESS_ID_DATA_URI));
     }
 
     // ex. update student set ? = ? where ? = ?
-    private static void modify(String targetColumn,
-                                   ArrayList<String> targetLst,
-                                   String modifyColumn,
-                                   boolean modifyInfo) {
-        for (String each : targetLst) {
+    private static void modify(String modifyColumn,
+                               boolean modifyInfo,
+                               String targetColumn,
+                               ArrayList<String> targetList) {
+        for (String each : targetList) {
 			StudentRepository.modify(modifyColumn, modifyInfo, targetColumn, Integer.parseInt(each));
         }
     }

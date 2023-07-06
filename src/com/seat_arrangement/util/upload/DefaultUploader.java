@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class DefaultUploader extends FileUploader{
 
     private static final String STUDENT_DATA_URI = FileUploader.LOCATION + "/default/student_data.txt";
-    private static final String SEAT_DATA_URI = FileUploader.LOCATION + "/default/seat_info.data";
+    private static final String SEAT_DATA_URI = FileUploader.LOCATION + "/default/seat_data.txt";
 
     public DefaultUploader(){
     }
@@ -25,7 +25,7 @@ public class DefaultUploader extends FileUploader{
 
         for(String each: list) {
             eachInfo = each.split(INFO_REGEX);
-			StudentRepository.save(eachInfo[0],eachInfo[1]);
+			StudentRepository.save(eachInfo[0].trim(),eachInfo[1].trim());
         }
     }
 
@@ -35,7 +35,7 @@ public class DefaultUploader extends FileUploader{
 
         for(String each: list) {
             eachInfo = each.split(INFO_REGEX);
-			SeatRepository.save(Integer.parseInt(eachInfo[0]),Integer.parseInt(eachInfo[1]));
+			SeatRepository.save(Integer.parseInt(eachInfo[0].trim()),Integer.parseInt(eachInfo[1].trim()));
         }
     }
 

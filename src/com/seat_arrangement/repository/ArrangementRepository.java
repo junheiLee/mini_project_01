@@ -34,7 +34,7 @@ public class ArrangementRepository extends SQLClass{
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setInt(1, seatId);
             pstmt.setInt(2, studentId);
-            rs = pstmt.executeQuery();
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(INSERT_ALL + " Error -> " + e.getMessage());

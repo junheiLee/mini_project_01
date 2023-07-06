@@ -19,7 +19,7 @@ public class SeatRepository extends SQLClass {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setInt(1, row);
             pstmt.setInt(2, column);
-            rs = pstmt.executeQuery();
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(INSERT_ALL + " Error -> " + e.getMessage());

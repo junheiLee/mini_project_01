@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import static com.seat_arrangement.util.column.SeatColumn.*;
 
 public class SeatDefaultModifier extends FileUploader{
-    private static final String NOT_USED_DATA_URI = "/supplement/seat_not_used_row_column.text";
+    private static final String NOT_USED_DATA_URI = LOCATION + "/supplement/seat_not_used_row_column.text";
     private static final boolean NOT_USED = false;
 
     public static void modifyInfo() {
