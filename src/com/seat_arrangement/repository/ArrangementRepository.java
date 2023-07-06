@@ -1,19 +1,20 @@
 package com.seat_arrangement.repository;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ArrangementRepository extends SQLClass{
     private static final String INSERT_ALL = "insert into arrangement (arrangeDate, seatId, studentId) values (curdate(), ?, ?)";
-    private static final String SELECT_BY_DATE = "select seatId, studentId from arrangement where arrangeDate = date_format(?, '%Y%M%D')";
+    private static final String SELECT_BY_DATE = "select seatId, studentId from arrangement where arrangeDate = ?";
 
     // 해당 날짜 자리 배치 정보 <자리id, 학생id> 가져오기
-    public Map<Integer, Integer> findByDate(String date) {
+    public Map<Integer, Integer> findByDate(Date date) {
         Map<Integer, Integer> arrangement = new HashMap<>();
         try {
             pstmt = conn.prepareStatement(SELECT_BY_DATE);
-            pstmt.setString(1, date);
+            pstmt.setDate(1, date);
             rs = pstmt.executeQuery();
 
             while (rs.next()) {

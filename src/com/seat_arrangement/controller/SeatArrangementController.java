@@ -38,14 +38,27 @@ public class SeatArrangementController {
         SeatDefaultModifier.modifyInfo();
     }
 
+    // 배치하기
     private void arrange() {
         this.arrangedStudents = service.arrangeStudent(studentRepo.findAllUsedId());
         this.arrangedSeats = service.arrangeSeat(seatRepo.findAllUsedId());
+        this.setUnused();
 
         for (int idx = 0; idx < arrangedStudents.size(); idx++) {
-            arrangementRepo.save(arrangedSeats.get(idx), arrangedStudents.get(idx));
+            arrangementRepo.save(this.arrangedSeats.get(idx), this.arrangedStudents.get(idx));
         }
     }
+
+    // 결원과 사용하지 않는 자리 매핑해 총 결과값으로 변경
+    // 결원 id = 0 취급
+    private void setUnused(){
+        ArrayList<Integer> unusedSeats = seatRepo.findAllNotUsedId();
+        for (int i = 0; i < unusedSeats.size(); i++) {
+            this.arrangedStudents.add(0);
+        }
+        this.arrangedSeats.addAll(unusedSeats);
+    }
+
 
     private void createHTML() {
         this.sortedStudentIds = service.sortBySeat(arrangementRepo.findByDate(TODAY));
