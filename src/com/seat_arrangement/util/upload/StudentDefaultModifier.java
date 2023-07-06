@@ -1,5 +1,7 @@
 package com.seat_arrangement.util.upload;
 
+import com.seat_arrangement.repository.StudentRepository;
+
 import java.util.ArrayList;
 
 import static com.seat_arrangement.util.column.StudentColumn.*;
@@ -18,15 +20,13 @@ public class StudentDefaultModifier extends FileUploader {
         modify(STUDENT_ID, readFile(NOT_IN_PROGRESS_ID_DATA_URI), IS_IN_PROGRESS, false);
     }
 
-    // ex. update student set isSmoker = true where studentId = ?
-    // "update student set " + modifyColumnToInfo + " where " + targetColumn + " = " + each
+    // ex. update student set ? = ? where ? = ?
     private static void modify(String targetColumn,
                                    ArrayList<String> targetLst,
                                    String modifyColumn,
                                    boolean modifyInfo) {
-        String sql = "update student set " + modifyColumn + " = ? where " + targetColumn + " = ?";
         for (String each : targetLst) {
-//			studentRepository.modify(sql, each, modifyInfo);
+			StudentRepository.modify(modifyColumn, modifyInfo, targetColumn, Integer.parseInt(each));
         }
     }
 
