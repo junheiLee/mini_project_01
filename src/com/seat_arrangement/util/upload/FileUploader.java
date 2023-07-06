@@ -19,7 +19,7 @@ public abstract class FileUploader {
         BufferedReader br = null;
 
         try {
-            fr = new FileReader(uri);
+            fr = new FileReader(LOCATION + uri);
             br = new BufferedReader(fr);
 
             String temp = "";
