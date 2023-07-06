@@ -23,7 +23,7 @@ public abstract class DBConnection {
 
     }
 
-    public static void getConnection() {
+    public static void get() {
         try {
             Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -34,6 +34,15 @@ public abstract class DBConnection {
 
         } catch (SQLException e) {
             System.out.println("Connection err! : " + e.getMessage());
+        }
+    }
+
+    public static void close(){
+        try {
+            conn.close();
+            System.out.println("Close success!");
+        } catch (SQLException e) {
+            System.out.println("Close Connection Error -> " + e.getMessage());
         }
     }
 

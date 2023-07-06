@@ -5,6 +5,7 @@ import com.seat_arrangement.repository.*;
 import com.seat_arrangement.repository.dbconnect.DBConnection;
 import com.seat_arrangement.service.RandomArrangementService;
 import com.seat_arrangement.util.upload.*;
+import com.seat_arrangement.view.HTMLMaker;
 
 import java.util.ArrayList;
 
@@ -24,9 +25,10 @@ public class SeatArrangementController {
 
     //전체 코드 실행
     public void run() {
-        DBConnection.getConnection();
+        DBConnection.get();
         initInfo();
         arrange();
+        DBConnection.close();
         createHTML();
     }
 
@@ -62,7 +64,7 @@ public class SeatArrangementController {
 
 
     private void createHTML() {
-
-
+        HTMLMaker.make(sortedStudentIds);
+        HTMLMaker.save();
     }
 }
