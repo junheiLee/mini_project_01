@@ -20,7 +20,7 @@ public abstract class HTMLTag {
     protected final static String OPEN_TD = "<td>";
     protected final static String CLOSE_TD = "</td>";
 
-    protected final static String OPEN_IMAGE = "<img src=./images/";
+    protected final static String OPEN_IMAGE = "<img src=./datafile/images/";
     protected final static String CLOSE_IMAGE = ".png /></a>";
 
 }
