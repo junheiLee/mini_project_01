@@ -1,9 +1,12 @@
-package com.seat_arrangement.repository;
+package com.seat_arrangement.repository.impl_auto_increment;
+
+import com.seat_arrangement.repository.SQLClass;
+import com.seat_arrangement.repository.repoInterface.SeatRepo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SeatRepository extends SQLClass {
+public class SeatRepoImpl extends SQLClass implements SeatRepo {
     private static final String SELECT_ALL_ID = "select seatId from seat";
     private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isUsed = true";
     private static final String SELECT_ALL_NOT_USED_ID = SELECT_ALL_ID + " where isUsed = false";
@@ -18,8 +21,7 @@ public class SeatRepository extends SQLClass {
         return super.findAllId(SELECT_ALL_NOT_USED_ID);
     }
 
-    // 자리 데이터 저장 - init() 에 사용
-    public static void save(int row, int column) {
+    public void save(int row, int column) {
         try {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setInt(1, row);
@@ -33,9 +35,8 @@ public class SeatRepository extends SQLClass {
         }
     }
 
-    // 자리 데이터 수정 - init() - modify() 에 사용
     // update seat set ? = ? where ? = ? and ? = ?
-    public static void modify(String modifyColumn, boolean modifyValue, String[] targetColumn, Integer[] targetValue) {
+    public void modify(String modifyColumn, boolean modifyValue, String[] targetColumn, Integer[] targetValue) {
         try {
             String sql = "update seat set " + modifyColumn
                     + " = ? where " + targetColumn[0]

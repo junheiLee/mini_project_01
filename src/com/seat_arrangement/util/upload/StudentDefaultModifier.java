@@ -1,6 +1,7 @@
 package com.seat_arrangement.util.upload;
 
-import com.seat_arrangement.repository.StudentRepository;
+import com.seat_arrangement.repository.impl_auto_increment.StudentRepoImpl;
+import com.seat_arrangement.repository.repoInterface.StudentRepo;
 
 import java.util.ArrayList;
 
@@ -10,6 +11,8 @@ public class StudentDefaultModifier extends FileUploader {
 
     private static final String IS_SMOKER_ID_DATA_URI = "/supplement/student_isSmoker_id.txt";
     private static final String NOT_IN_PROGRESS_ID_DATA_URI = "/supplement/student_not_inProgress_id.txt";
+
+    private static StudentRepo studentRepo = new StudentRepoImpl();
 
     public StudentDefaultModifier() {
     }
@@ -26,7 +29,7 @@ public class StudentDefaultModifier extends FileUploader {
                                String targetColumn,
                                ArrayList<String> targetList) {
         for (String each : targetList) {
-            StudentRepository.modify(modifyColumn, modifyInfo, targetColumn, Integer.parseInt(each));
+            studentRepo.modify(modifyColumn, modifyInfo, targetColumn, Integer.parseInt(each));
         }
     }
 

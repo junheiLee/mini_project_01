@@ -1,6 +1,7 @@
 package com.seat_arrangement.util.upload;
 
-import com.seat_arrangement.repository.SeatRepository;
+import com.seat_arrangement.repository.impl_auto_increment.SeatRepoImpl;
+import com.seat_arrangement.repository.repoInterface.SeatRepo;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;
@@ -10,6 +11,8 @@ import static com.seat_arrangement.util.column.SeatColumn.*;
 public class SeatDefaultModifier extends FileUploader {
     private static final String NOT_USED_DATA_URI = "/supplement/seat_not_used_row_column.txt";
     private static final boolean NOT_USED = false;
+
+    private static SeatRepo seatRepo = new SeatRepoImpl();
 
     public static void modifyInfo() {
         modifyIsUsedByRowAndColumn(readFile(NOT_USED_DATA_URI));
@@ -23,7 +26,7 @@ public class SeatDefaultModifier extends FileUploader {
 
         for (String each : targetLst) {
             targetValue = Stream.of(each.split(INFO_REGEX)).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
-            SeatRepository.modify(IS_USED, NOT_USED, targetColumn, targetValue);     // update seat set ? = ? where ? = ? and ? = ?
+            seatRepo.modify(IS_USED, NOT_USED, targetColumn, targetValue);     // update seat set ? = ? where ? = ? and ? = ?
 
         }
     }

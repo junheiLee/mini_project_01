@@ -1,25 +1,28 @@
-package com.seat_arrangement.repository;
+package com.seat_arrangement.repository.impl_auto_increment;
+
+import com.seat_arrangement.repository.SQLClass;
+import com.seat_arrangement.repository.repoInterface.StudentRepo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StudentRepository extends SQLClass {
+public class StudentRepoImpl extends SQLClass implements StudentRepo {
     private static final String SELECT_ALL_ID = "select studentId from student";
     private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isInProgress = true";
     private static final String INSERT_ALL = "insert into student (studentName, mbti) values (?, ?)";
     private static final String MODIFY_BY_ID = "update student set ? = ? where ? = ?";
 
 
-    public StudentRepository() {
+    public StudentRepoImpl() {
     }
 
-    // 모든 학생 id 반환
+    @Override
     public ArrayList<Integer> findAllUsedId() {
         return super.findAllId(SELECT_ALL_USED_ID);
     }
 
-    // 학생 데이터 저장 - init() 에 사용
-    public static void save(String name, String mbti) {
+    @Override
+    public void save(String name, String mbti) {
         try {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setString(1, name);
@@ -33,8 +36,8 @@ public class StudentRepository extends SQLClass {
         }
     }
 
-    // 학생 데이터 수정 - init() - modify() 에 사용
-    public static void modify(String modifyColumn, boolean modifyInfo, String targetColumn, int targetValue) {
+    @Override
+    public void modify(String modifyColumn, boolean modifyInfo, String targetColumn, int targetValue) {
         try {
             String sql = "update student set " + modifyColumn + " = ? where " + targetColumn + " = ?";
             pstmt = conn.prepareStatement(sql);

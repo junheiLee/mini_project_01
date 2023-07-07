@@ -1,8 +1,10 @@
 package com.seat_arrangement.controller;
 
 
-import com.seat_arrangement.repository.*;
 import com.seat_arrangement.repository.dbconnect.DBConnection;
+import com.seat_arrangement.repository.impl_auto_increment.ArrangementRepoImpl;
+import com.seat_arrangement.repository.impl_auto_increment.SeatRepoImpl;
+import com.seat_arrangement.repository.impl_auto_increment.StudentRepoImpl;
 import com.seat_arrangement.service.RandomArrangementService;
 import com.seat_arrangement.util.upload.*;
 import com.seat_arrangement.view.HTMLMaker;
@@ -15,9 +17,9 @@ public class SeatArrangementController {
 
     private final RandomArrangementService service = new RandomArrangementService();
 
-    private final ArrangementRepository arrangementRepo = new ArrangementRepository();
-    private final StudentRepository studentRepo = new StudentRepository();
-    private final SeatRepository seatRepo = new SeatRepository();
+    private final ArrangementRepoImpl arrangementRepo = new ArrangementRepoImpl();
+    private final StudentRepoImpl studentRepo = new StudentRepoImpl();
+    private final SeatRepoImpl seatRepo = new SeatRepoImpl();
 
     private ArrayList<Integer> arrangedStudents;
     private ArrayList<Integer> arrangedSeats;
