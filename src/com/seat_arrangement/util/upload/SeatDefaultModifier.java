@@ -6,10 +6,10 @@ import com.seat_arrangement.repository.repoInterface.SeatRepo;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-import static com.seat_arrangement.util.column.SeatColumn.*;
+import static com.seat_arrangement.util.SeatColumn.*;
 
 public class SeatDefaultModifier extends FileUploader {
-    private static final String NOT_USED_DATA_URI = "/supplement/seat_not_used_row_column.txt";
+    private static final String NOT_USED_DATA_URI = "/default/supplement/seat_not_used_row_column.txt";
     private static final boolean NOT_USED = false;
 
     private static final SeatRepo seatRepo = new SeatRepoImpl();

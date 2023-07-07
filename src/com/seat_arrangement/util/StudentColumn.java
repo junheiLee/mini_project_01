@@ -1,4 +1,4 @@
-package com.seat_arrangement.util.column;
+package com.seat_arrangement.util;
 
 public abstract class StudentColumn {
     public static final String STUDENT_ID = "studentId";

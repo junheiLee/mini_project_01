@@ -12,7 +12,7 @@ import com.seat_arrangement.service.RandomArrangementService;
 import com.seat_arrangement.util.upload.DefaultUploader;
 import com.seat_arrangement.util.upload.SeatDefaultModifier;
 import com.seat_arrangement.util.upload.StudentDefaultModifier;
-import com.seat_arrangement.view.HTMLMaker;
+import com.seat_arrangement.view.SeatArrangementHTMLMaker;
 
 import java.util.ArrayList;
 
@@ -75,7 +75,6 @@ public class SeatArrangementController {
     }
 
     private void createHTML() {
-        HTMLMaker.make(sortedStudentIds);
-        HTMLMaker.save();
+        SeatArrangementHTMLMaker.create(sortedStudentIds);
     }
 }

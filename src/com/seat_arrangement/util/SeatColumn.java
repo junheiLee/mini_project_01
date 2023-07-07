@@ -1,4 +1,4 @@
-package com.seat_arrangement.util.column;
+package com.seat_arrangement.util;
 
 public abstract class SeatColumn {
     public static final String ROW = "seatRow";

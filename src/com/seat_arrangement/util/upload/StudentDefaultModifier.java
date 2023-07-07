@@ -5,12 +5,12 @@ import com.seat_arrangement.repository.repoInterface.StudentRepo;
 
 import java.util.ArrayList;
 
-import static com.seat_arrangement.util.column.StudentColumn.*;
+import static com.seat_arrangement.util.StudentColumn.*;
 
 public class StudentDefaultModifier extends FileUploader {
 
-    private static final String IS_SMOKER_ID_DATA_URI = "/supplement/student_isSmoker_id.txt";
-    private static final String NOT_IN_PROGRESS_ID_DATA_URI = "/supplement/student_not_inProgress_id.txt";
+    private static final String IS_SMOKER_ID_DATA_URI = "/default/supplement/student_isSmoker_id.txt";
+    private static final String NOT_IN_PROGRESS_ID_DATA_URI = "/default/supplement/student_not_inProgress_id.txt";
 
     private static final StudentRepo studentRepo = new StudentRepoImpl();
 
