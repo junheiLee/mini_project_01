@@ -37,7 +37,7 @@ public abstract class DBConnection {
         }
     }
 
-    public static void close(){
+    public static void close() {
         try {
             conn.close();
             System.out.println("Close success!");

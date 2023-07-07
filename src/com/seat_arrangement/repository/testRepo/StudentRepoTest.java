@@ -1,4 +1,4 @@
-package com.seat_arrangement.repository.testImpl;
+package com.seat_arrangement.repository.testRepo;
 
 import com.seat_arrangement.repository.SQLClass;
 import com.seat_arrangement.repository.repoInterface.StudentRepo;
@@ -54,11 +54,11 @@ public class StudentRepoTest extends SQLClass implements StudentRepo {
     }
 
     public void deleteAll() {
-        this.id=0;
+        this.id = 0;
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(DELETE_ALL);
-        }catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(DELETE_ALL + "Error -> " + e.getMessage());
         }
 

@@ -12,8 +12,8 @@ public class DefaultUploader extends FileUploader {
     private static final String STUDENT_DATA_URI = "/default/student_data.txt";
     private static final String SEAT_DATA_URI = "/default/seat_data.txt";
 
-    private static StudentRepo studentRepo = new StudentRepoImpl();
-    private static SeatRepo seatRepo = new SeatRepoImpl();
+    private static final StudentRepo studentRepo = new StudentRepoImpl();
+    private static final SeatRepo seatRepo = new SeatRepoImpl();
 
     public DefaultUploader() {
     }

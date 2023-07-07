@@ -12,7 +12,7 @@ public class SeatDefaultModifier extends FileUploader {
     private static final String NOT_USED_DATA_URI = "/supplement/seat_not_used_row_column.txt";
     private static final boolean NOT_USED = false;
 
-    private static SeatRepo seatRepo = new SeatRepoImpl();
+    private static final SeatRepo seatRepo = new SeatRepoImpl();
 
     public static void modifyInfo() {
         modifyIsUsedByRowAndColumn(readFile(NOT_USED_DATA_URI));

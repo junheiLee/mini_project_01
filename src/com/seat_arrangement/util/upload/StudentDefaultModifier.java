@@ -12,7 +12,7 @@ public class StudentDefaultModifier extends FileUploader {
     private static final String IS_SMOKER_ID_DATA_URI = "/supplement/student_isSmoker_id.txt";
     private static final String NOT_IN_PROGRESS_ID_DATA_URI = "/supplement/student_not_inProgress_id.txt";
 
-    private static StudentRepo studentRepo = new StudentRepoImpl();
+    private static final StudentRepo studentRepo = new StudentRepoImpl();
 
     public StudentDefaultModifier() {
     }

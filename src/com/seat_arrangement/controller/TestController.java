@@ -3,9 +3,9 @@ package com.seat_arrangement.controller;
 import com.seat_arrangement.repository.dbconnect.DBConnection;
 import com.seat_arrangement.repository.repoInterface.SeatRepo;
 import com.seat_arrangement.repository.repoInterface.StudentRepo;
-import com.seat_arrangement.repository.testImpl.SeatRepoTest;
-import com.seat_arrangement.repository.testImpl.StudentRepoTest;
 import com.seat_arrangement.repository.testRepo.ArrangementRepoTest;
+import com.seat_arrangement.repository.testRepo.SeatRepoTest;
+import com.seat_arrangement.repository.testRepo.StudentRepoTest;
 import com.seat_arrangement.service.RandomArrangementService;
 import com.seat_arrangement.util.upload.DefaultUploader;
 import com.seat_arrangement.util.upload.SeatDefaultModifier;
@@ -22,15 +22,16 @@ public class TestController extends SeatArrangementController {
     private final StudentRepo studentRepo = new StudentRepoTest();
     private final SeatRepo seatRepo = new SeatRepoTest();
 
-    private ArrayList<Integer> arrangedStudents = new ArrayList<>();
-    private ArrayList<Integer> arrangedSeats = new ArrayList<>();
+    private final ArrayList<Integer> arrangedStudents = new ArrayList<>();
+    private final ArrayList<Integer> arrangedSeats = new ArrayList<>();
     private ArrayList<Integer> sortedStudentIds = new ArrayList<>(); // HTML 배치에 쓰일 실제 36좌석 배치 List
 
     //전체 코드 실행
     public void run() {
+        int id = 1;
         DBConnection.get();
         initInfo();
-        arrange();
+        arrange(id);
         DBConnection.close();
         createHTML();
     }
@@ -47,15 +48,15 @@ public class TestController extends SeatArrangementController {
     }
 
     // 배치하기
-    private void arrange() {
+    private void arrange(int id) {
         this.arrangedStudents.addAll(service.arrangeStudent(studentRepo.findAllUsedId()));
         this.arrangedSeats.addAll(service.arrangeSeat(seatRepo.findAllUsedId()));
 
-        arrangementRepo.setId(3);
+        arrangementRepo.setId(id);
         for (int idx = 0; idx < arrangedStudents.size(); idx++) {
             arrangementRepo.save(this.arrangedSeats.get(idx), this.arrangedStudents.get(idx));
         }
-        this.sortedStudentIds = service.sortBySeat(arrangementRepo.findById(3));
+        this.sortedStudentIds = service.sortBySeat(arrangementRepo.findById(id));
     }
 
     // 결원과 사용하지 않는 자리 매핑해 총 결과값으로 변경 (모든 배치 방법에 필수)

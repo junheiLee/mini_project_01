@@ -54,10 +54,10 @@ public class SeatRepoImpl extends SQLClass implements SeatRepo {
 
     @Override
     public void deleteAll() {
-        try{
+        try {
             stmt = conn.createStatement();
             stmt.executeUpdate(DELETE_ALL);
-        } catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(DELETE_ALL + " Error -> " + e.getMessage());
         } finally {
             close(stmt, rs);

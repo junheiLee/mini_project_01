@@ -1,9 +1,8 @@
 package com.seat_arrangement.service;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Map;
+
 
 // 랜덤으로 자리 배치하기
 public class RandomArrangementService extends ArrangementService {

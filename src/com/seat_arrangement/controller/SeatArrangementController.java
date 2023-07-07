@@ -1,15 +1,17 @@
 package com.seat_arrangement.controller;
 
 
-import com.seat_arrangement.repository.dbconnect.DBConnection;
 import com.seat_arrangement.repository.ArrangementRepoImpl;
 import com.seat_arrangement.repository.SeatRepoImpl;
 import com.seat_arrangement.repository.StudentRepoImpl;
+import com.seat_arrangement.repository.dbconnect.DBConnection;
 import com.seat_arrangement.repository.repoInterface.ArrangementRepo;
 import com.seat_arrangement.repository.repoInterface.SeatRepo;
 import com.seat_arrangement.repository.repoInterface.StudentRepo;
 import com.seat_arrangement.service.RandomArrangementService;
-import com.seat_arrangement.util.upload.*;
+import com.seat_arrangement.util.upload.DefaultUploader;
+import com.seat_arrangement.util.upload.SeatDefaultModifier;
+import com.seat_arrangement.util.upload.StudentDefaultModifier;
 import com.seat_arrangement.view.HTMLMaker;
 
 import java.util.ArrayList;
@@ -24,8 +26,8 @@ public class SeatArrangementController {
     private final StudentRepo studentRepo = new StudentRepoImpl();
     private final SeatRepo seatRepo = new SeatRepoImpl();
 
-    private ArrayList<Integer> arrangedStudents = new ArrayList<>();
-    private ArrayList<Integer> arrangedSeats = new ArrayList<>();
+    private final ArrayList<Integer> arrangedStudents = new ArrayList<>();
+    private final ArrayList<Integer> arrangedSeats = new ArrayList<>();
     private ArrayList<Integer> sortedStudentIds = new ArrayList<>(); // HTML 배치에 쓰일 실제 36좌석 배치 List
 
     //전체 코드 실행

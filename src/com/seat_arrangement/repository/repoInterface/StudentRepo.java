@@ -3,10 +3,10 @@ package com.seat_arrangement.repository.repoInterface;
 import java.util.ArrayList;
 
 public interface StudentRepo {
-    static final String SELECT_ALL_ID = "select studentId from student";
-    static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isInProgress = true";
-    static final String UPDATE_BY_ID = "update student set ? = ? where ? = ?";
-    static final String DELETE_ALL = "delete from student";
+    String SELECT_ALL_ID = "select studentId from student";
+    String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isInProgress = true";
+    String UPDATE_BY_ID = "update student set ? = ? where ? = ?";
+    String DELETE_ALL = "delete from student";
 
     // 모든 현재 수강중인 학생 id 반환
     ArrayList<Integer> findAllUsedId();

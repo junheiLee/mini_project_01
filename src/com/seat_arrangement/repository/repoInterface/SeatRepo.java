@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public interface SeatRepo {
 
-    static final String SELECT_ALL_ID = "select seatId from seat";
-    static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isUsed = true";
-    static final String SELECT_ALL_NOT_USED_ID = SELECT_ALL_ID + " where isUsed = false";
-    static final String UPDATE_BY_PROCESSION = "update seat set isUsed = ? where seatRow = ? and seatColumn = ?";
-    static final String DELETE_ALL = "delete from seat";
+    String SELECT_ALL_ID = "select seatId from seat";
+    String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isUsed = true";
+    String SELECT_ALL_NOT_USED_ID = SELECT_ALL_ID + " where isUsed = false";
+    String UPDATE_BY_PROCESSION = "update seat set isUsed = ? where seatRow = ? and seatColumn = ?";
+    String DELETE_ALL = "delete from seat";
 
     ArrayList<Integer> findAllUsedId();
 

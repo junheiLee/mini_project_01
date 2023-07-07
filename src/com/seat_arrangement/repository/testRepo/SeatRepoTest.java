@@ -1,4 +1,4 @@
-package com.seat_arrangement.repository.testImpl;
+package com.seat_arrangement.repository.testRepo;
 
 import com.seat_arrangement.repository.SQLClass;
 import com.seat_arrangement.repository.repoInterface.SeatRepo;
@@ -28,7 +28,7 @@ public class SeatRepoTest extends SQLClass implements SeatRepo {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setInt(1, this.id);
             pstmt.setInt(2, row);
-            pstmt.setInt(3,  column);
+            pstmt.setInt(3, column);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -64,7 +64,7 @@ public class SeatRepoTest extends SQLClass implements SeatRepo {
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(DELETE_ALL);
-        }catch(SQLException e) {
+        } catch (SQLException e) {
             System.out.println(DELETE_ALL + "Error -> " + e.getMessage());
         }
 
