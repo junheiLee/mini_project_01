@@ -1,6 +1,7 @@
 package com.seat_arrangement.controller;
 
 
+import com.seat_arrangement.repository.*;
 import com.seat_arrangement.repository.dbconnect.DBConnection;
 import com.seat_arrangement.repository.impl_auto_increment.ArrangementRepoImpl;
 import com.seat_arrangement.repository.impl_auto_increment.SeatRepoImpl;
@@ -23,14 +24,13 @@ public class SeatArrangementController {
 
     private ArrayList<Integer> arrangedStudents;
     private ArrayList<Integer> arrangedSeats;
-    private ArrayList<Integer> sortedStudentIds; // HTML 배치에 쓰일 실제 36좌석 배치 List
+    public ArrayList<Integer> sortedStudentIds; // HTML 배치에 쓰일 실제 36좌석 배치 List
 
     //전체 코드 실행
     public void run() {
         DBConnection.get();
         initInfo();
         arrange();
-        DBConnection.close();
         createHTML();
     }
 
@@ -52,6 +52,7 @@ public class SeatArrangementController {
             arrangementRepo.save(this.arrangedSeats.get(idx), this.arrangedStudents.get(idx));
         }
         this.sortedStudentIds = service.sortBySeat(arrangementRepo.findByDate(TODAY));
+        System.out.println(sortedStudentIds.size());
     }
 
     // 결원과 사용하지 않는 자리 매핑해 총 결과값으로 변경 (모든 배치 방법에 필수)

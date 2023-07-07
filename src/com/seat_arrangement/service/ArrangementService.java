@@ -20,6 +20,7 @@ public abstract class ArrangementService {
         for (Integer seatIdx : keySet) {
             sortedStudents.add(arrangements.get(seatIdx));
         }
+        System.out.println(sortedStudents.size());
         return sortedStudents;
     }
 }

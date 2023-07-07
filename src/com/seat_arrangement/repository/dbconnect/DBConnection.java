@@ -8,14 +8,13 @@ public abstract class DBConnection {
     private final static String DB_NAME = "mini_project_01";
 
     //DRIVER -> "org.mariadb.jdbc.Driver" hdh.ver
-    private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private final static String DRIVER = "org.mariadb.jdbc.Driver";
 
     //URL -> "jdbc:mariadb://localhost:3306/dbName" hdh.ver
-    private final static String URL = "jdbc:mysql://localhost:3306/"
-            + DB_NAME
-            + "?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
+    private final static String URL = "jdbc:mariadb://localhost:3306/"
+            + DB_NAME;
     private final static String USERNAME = "root";
-    private final static String PASSWORD = "qlalf79";
+    private final static String PASSWORD = "0414";
 
     protected static Connection conn = null;
 
