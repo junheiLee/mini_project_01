@@ -1,0 +1,25 @@
+drop table student;
+drop table seat;
+drop table arrangement;
+
+create table student (
+   studentId int(1),
+   studentName varchar(20) not null,
+   mbti varchar(20),
+   isSmoker boolean default false,
+   isInProgress boolean default true,
+   primary key(studentId)
+);
+create table seat (
+   seatId int(1),
+   seatRow int(1),
+   seatColumn int(1),
+   isUsed boolean default true,
+   primary key(seatId)
+);
+create table arrangement (
+   id int(4),
+   arrangeDate date,
+   seatId int(1),
+   studentId int(1)
+);

@@ -1,28 +1,26 @@
 package com.seat_arrangement.controller;
 
-
 import com.seat_arrangement.repository.dbconnect.DBConnection;
-import com.seat_arrangement.repository.ArrangementRepoImpl;
-import com.seat_arrangement.repository.SeatRepoImpl;
-import com.seat_arrangement.repository.StudentRepoImpl;
-import com.seat_arrangement.repository.repoInterface.ArrangementRepo;
 import com.seat_arrangement.repository.repoInterface.SeatRepo;
 import com.seat_arrangement.repository.repoInterface.StudentRepo;
+import com.seat_arrangement.repository.testImpl.SeatRepoTest;
+import com.seat_arrangement.repository.testImpl.StudentRepoTest;
+import com.seat_arrangement.repository.testRepo.ArrangementRepoTest;
 import com.seat_arrangement.service.RandomArrangementService;
-import com.seat_arrangement.util.upload.*;
+import com.seat_arrangement.util.upload.DefaultUploader;
+import com.seat_arrangement.util.upload.SeatDefaultModifier;
+import com.seat_arrangement.util.upload.StudentDefaultModifier;
 import com.seat_arrangement.view.HTMLMaker;
 
 import java.util.ArrayList;
 
-import static com.seat_arrangement.util.ArrangeInfo.TODAY;
-
-public class SeatArrangementController {
+public class TestController extends SeatArrangementController {
 
     private final RandomArrangementService service = new RandomArrangementService();
 
-    private final ArrangementRepo arrangementRepo = new ArrangementRepoImpl();
-    private final StudentRepo studentRepo = new StudentRepoImpl();
-    private final SeatRepo seatRepo = new SeatRepoImpl();
+    private final ArrangementRepoTest arrangementRepo = new ArrangementRepoTest();
+    private final StudentRepo studentRepo = new StudentRepoTest();
+    private final SeatRepo seatRepo = new SeatRepoTest();
 
     private ArrayList<Integer> arrangedStudents = new ArrayList<>();
     private ArrayList<Integer> arrangedSeats = new ArrayList<>();
@@ -34,18 +32,30 @@ public class SeatArrangementController {
         initInfo();
         arrange();
         DBConnection.close();
-
         createHTML();
     }
 
     // 학생, 자리 정보 초기화
     private void initInfo() {
+        studentRepo.deleteAll();
+        seatRepo.deleteAll();
         DefaultUploader.loadInfo();
 
         StudentDefaultModifier.modifyInfo();
         SeatDefaultModifier.modifyInfo();
-
         this.setUnused();
+    }
+
+    // 배치하기
+    private void arrange() {
+        this.arrangedStudents.addAll(service.arrangeStudent(studentRepo.findAllUsedId()));
+        this.arrangedSeats.addAll(service.arrangeSeat(seatRepo.findAllUsedId()));
+
+        arrangementRepo.setId(3);
+        for (int idx = 0; idx < arrangedStudents.size(); idx++) {
+            arrangementRepo.save(this.arrangedSeats.get(idx), this.arrangedStudents.get(idx));
+        }
+        this.sortedStudentIds = service.sortBySeat(arrangementRepo.findById(3));
     }
 
     // 결원과 사용하지 않는 자리 매핑해 총 결과값으로 변경 (모든 배치 방법에 필수)
@@ -58,19 +68,6 @@ public class SeatArrangementController {
         this.arrangedSeats.addAll(unusedSeats);
     }
 
-    // 배치하기
-    private void arrange() {
-        // 자리와 학생 정렬
-        this.arrangedStudents.addAll(service.arrangeStudent(studentRepo.findAllUsedId()));
-        this.arrangedSeats.addAll(service.arrangeSeat(seatRepo.findAllUsedId()));
-
-        // 해당 순서대로 arrangement db에 정보 저장
-        for (int idx = 0; idx < arrangedStudents.size(); idx++) {
-            arrangementRepo.save(this.arrangedSeats.get(idx), this.arrangedStudents.get(idx));
-        }
-        this.sortedStudentIds.clear(); // controller의 list init
-        this.sortedStudentIds = service.sortBySeat(arrangementRepo.findByDate(TODAY)); //controller list에 저장
-    }
 
     private void createHTML() {
         HTMLMaker.make(sortedStudentIds);

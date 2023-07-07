@@ -1,7 +1,7 @@
 package com.seat_arrangement.util.upload;
 
-import com.seat_arrangement.repository.impl_auto_increment.SeatRepoImpl;
-import com.seat_arrangement.repository.impl_auto_increment.StudentRepoImpl;
+import com.seat_arrangement.repository.SeatRepoImpl;
+import com.seat_arrangement.repository.StudentRepoImpl;
 import com.seat_arrangement.repository.repoInterface.SeatRepo;
 import com.seat_arrangement.repository.repoInterface.StudentRepo;
 

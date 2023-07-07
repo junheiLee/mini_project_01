@@ -1,4 +1,4 @@
-package com.seat_arrangement.repository.impl_auto_increment;
+package com.seat_arrangement.repository.testImpl;
 
 import com.seat_arrangement.repository.SQLClass;
 import com.seat_arrangement.repository.repoInterface.SeatRepo;
@@ -6,12 +6,12 @@ import com.seat_arrangement.repository.repoInterface.SeatRepo;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SeatRepoImpl extends SQLClass implements SeatRepo {
-    private static final String SELECT_ALL_ID = "select seatId from seat";
-    private static final String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isUsed = true";
-    private static final String SELECT_ALL_NOT_USED_ID = SELECT_ALL_ID + " where isUsed = false";
-    private static final String INSERT_ALL = "insert into seat (seatRow, seatColumn) values (?, ?)";
-    private static final String UPDATE_BY_PROCESSION = "update seat set isUsed = ? where seatRow = ? and seatColumn = ?";
+public class SeatRepoTest extends SQLClass implements SeatRepo {
+
+    private static final String INSERT_ALL = "insert into seat (seatId, seatRow, seatColumn) values (?, ?, ?)";
+    private static final String DELETE_ALL = "delete from seat";
+
+    private static int id = 0;
 
     public ArrayList<Integer> findAllUsedId() {
         return super.findAllId(SELECT_ALL_USED_ID);
@@ -22,10 +22,13 @@ public class SeatRepoImpl extends SQLClass implements SeatRepo {
     }
 
     public void save(int row, int column) {
+
         try {
+            this.id++;
             pstmt = conn.prepareStatement(INSERT_ALL);
-            pstmt.setInt(1, row);
-            pstmt.setInt(2, column);
+            pstmt.setInt(1, this.id);
+            pstmt.setInt(2, row);
+            pstmt.setInt(3,  column);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -54,5 +57,16 @@ public class SeatRepoImpl extends SQLClass implements SeatRepo {
         } finally {
             close(pstmt, rs);
         }
+    }
+
+    public void deleteAll() {
+        this.id = 0;
+        try {
+            stmt = conn.createStatement();
+            stmt.executeUpdate(DELETE_ALL);
+        }catch(SQLException e) {
+            System.out.println(DELETE_ALL + "Error -> " + e.getMessage());
+        }
+
     }
 }

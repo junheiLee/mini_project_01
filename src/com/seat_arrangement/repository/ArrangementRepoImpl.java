@@ -1,6 +1,5 @@
-package com.seat_arrangement.repository.impl_auto_increment;
+package com.seat_arrangement.repository;
 
-import com.seat_arrangement.repository.SQLClass;
 import com.seat_arrangement.repository.repoInterface.ArrangementRepo;
 
 import java.sql.Date;
