@@ -1,6 +1,6 @@
 package com.seat_arrangement.repository;
 
-import com.seat_arrangement.repository.dbconnect.DBConnection;
+import com.seat_arrangement.repository.connection.DBConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

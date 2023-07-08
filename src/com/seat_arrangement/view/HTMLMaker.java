@@ -20,6 +20,7 @@ public abstract class HTMLMaker {
             System.out.println("File Writer -> " + e.getMessage());
         } finally {
             try {
+                assert fw != null;
                 fw.close();
             } catch (IOException e) {
                 System.out.println("saveHTML() finally ->" + e.getMessage());

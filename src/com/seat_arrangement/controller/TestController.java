@@ -1,15 +1,17 @@
 package com.seat_arrangement.controller;
 
 import com.seat_arrangement.DTO.StudentDTO;
-import com.seat_arrangement.repository.dbconnect.DBConnection;
-
-import com.seat_arrangement.repository.intf.*;
-import com.seat_arrangement.repository.testRepo.*;
+import com.seat_arrangement.repository.connection.DBConnection;
+import com.seat_arrangement.repository.intf.SeatRepo;
+import com.seat_arrangement.repository.intf.StudentRepo;
+import com.seat_arrangement.repository.testRepo.ArrangementRepoTest;
+import com.seat_arrangement.repository.testRepo.SeatRepoTest;
+import com.seat_arrangement.repository.testRepo.StudentRepoTest;
 import com.seat_arrangement.service.RandomArrangementService;
-import com.seat_arrangement.view.*;
-
-import com.seat_arrangement.util.upload.*;
-
+import com.seat_arrangement.util.upload.DefaultUploader;
+import com.seat_arrangement.util.upload.SupplementUploader;
+import com.seat_arrangement.view.DetailHTMLMaker;
+import com.seat_arrangement.view.SeatArrangementHTMLMaker;
 
 import java.util.ArrayList;
 

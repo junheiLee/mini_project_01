@@ -1,11 +1,10 @@
 package com.seat_arrangement.controller;
 
-
 import com.seat_arrangement.DTO.StudentDTO;
 import com.seat_arrangement.repository.ArrangementRepoImpl;
 import com.seat_arrangement.repository.SeatRepoImpl;
 import com.seat_arrangement.repository.StudentRepoImpl;
-import com.seat_arrangement.repository.dbconnect.DBConnection;
+import com.seat_arrangement.repository.connection.DBConnection;
 import com.seat_arrangement.repository.intf.ArrangementRepo;
 import com.seat_arrangement.repository.intf.SeatRepo;
 import com.seat_arrangement.repository.intf.StudentRepo;

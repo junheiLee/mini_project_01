@@ -1,4 +1,4 @@
-package com.seat_arrangement.repository.dbconnect;
+package com.seat_arrangement.repository.connection;
 
 import java.sql.*;
 
@@ -6,17 +6,9 @@ import java.sql.*;
 public abstract class DBConnection {
 
     //db명
-    private final static String DB_NAME = "mini_project_01";
-
-    //DRIVER -> "org.mariadb.jdbc.Driver" hdh.ver
-    private final static String DRIVER = "com.mysql.cj.jdbc.Driver";
-
-    //URL -> "jdbc:mariadb://localhost:3306/dbName" hdh.ver
-    private final static String URL = "jdbc:mysql://localhost:3306/"
-            + DB_NAME
-            + "?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
-    private final static String USERNAME = "root";
-    private final static String PASSWORD = "qlalf79";
+    public static String URL = "jdbc:h2:tcp://localhost/~/test"; // 규약 - h2 접근 방법
+    public static final String USERNAME = "sa";
+    public static final String PASSWORD = "";
 
     protected static Connection conn = null;
 
@@ -26,15 +18,11 @@ public abstract class DBConnection {
 
     public static void get() {
         try {
-            Class.forName(DRIVER);
+            // JDBC 제공 DB 연결 메서드
+            // 라이브러리에 있는 DB 드라이버 탐색 -> 해당 드라이버가 제공하는 커넥션(java.sql.Connection 구현체) 반환
             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("Connect success!");
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("Driver err! : " + e.getMessage());
-
         } catch (SQLException e) {
-            System.out.println("Connection err! : " + e.getMessage());
+            throw new IllegalStateException(e);
         }
     }
 
