@@ -17,4 +17,23 @@ public abstract class SortingArrangement {
         }
         return sortedStudents;
     }
+
+    public ArrayList<Integer> randomByRow(ArrayList<Integer> studentIdsInOrders, ArrayList<Integer> rows) {
+        ArrayList<Integer> randomOrder = new ArrayList<>();
+        ArrayList<Integer> splitList = new ArrayList<>();
+
+        int count = 0;
+        for (int row : rows) {
+
+            for (int i = 0; i < row; i++) {
+                System.out.println(studentIdsInOrders.get(count));
+                splitList.add(studentIdsInOrders.get(count));
+                count++;
+            }
+            Collections.shuffle(splitList);
+            randomOrder.addAll(splitList);
+            splitList.clear();
+        }
+        return randomOrder;
+    }
 }

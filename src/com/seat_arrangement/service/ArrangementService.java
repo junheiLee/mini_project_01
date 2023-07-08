@@ -16,5 +16,9 @@ public interface ArrangementService {
     // 자리 순서 정렬
     ArrayList<Integer> arrangeSeat(ArrayList<SeatDTO> seats);
 
+    // 좌석 id를 오름차순으로 학생 정렬
     ArrayList<Integer> sortBySeat(Map<Integer, Integer> arrangements);
+
+    // row 기준 랜덤
+    ArrayList<Integer> randomByRow(ArrayList<Integer> studentIdsInOrders, ArrayList<Integer> rows);
 }
