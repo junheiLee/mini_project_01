@@ -1,19 +1,11 @@
 package com.seat_arrangement.util.upload;
 
-import com.seat_arrangement.repository.SeatRepoImpl;
-import com.seat_arrangement.repository.StudentRepoImpl;
-import com.seat_arrangement.repository.repoInterface.SeatRepo;
-import com.seat_arrangement.repository.repoInterface.StudentRepo;
-
 import java.util.ArrayList;
 
 public class DefaultUploader extends FileUploader {
 
-    private static final String STUDENT_DATA_URI = "/default/student_data.txt";
-    private static final String SEAT_DATA_URI = "/default/seat_data.txt";
-
-    private static final StudentRepo studentRepo = new StudentRepoImpl();
-    private static final SeatRepo seatRepo = new SeatRepoImpl();
+    private static final String STUDENT_DATA_URI = "student_data.txt";
+    private static final String SEAT_DATA_URI = "seat_data.txt";
 
     public DefaultUploader() {
     }

@@ -1,4 +1,4 @@
-package com.seat_arrangement.repository.repoInterface;
+package com.seat_arrangement.repository.intf;
 
 import java.util.ArrayList;
 

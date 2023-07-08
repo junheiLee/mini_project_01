@@ -1,8 +1,6 @@
 package com.seat_arrangement.view;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 // 저장된 배치 정보를 토대로 html 파일로 배치도 저장
@@ -19,12 +17,18 @@ public class SeatArrangementHTMLMaker extends HTMLMaker implements HTMLTag {
     public static void make(ArrayList<Integer> sortedStudentIds) {
         int length = sortedStudentIds.size();
 
-        content += FRE_FRAME;
+        content += FRE_SEAT_ARRANGEMENT_FRAME;
         for (int i = 1; i < length; i++) {
             content += OPEN_TR;
             i--;
             for (int j = 0; j < 6; j++) {
+
                 content += OPEN_TD;
+                if (sortedStudentIds.get(i) == 0) {
+
+                } else {
+                    content += (OPEN_LINK + URL + "details/" + sortedStudentIds.get(i) + CLOSE_LINK);
+                }
                 content += OPEN_IMAGE;
                 content += sortedStudentIds.get(i);
                 content += CLOSE_IMAGE;

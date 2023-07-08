@@ -4,6 +4,7 @@ import java.sql.*;
 
 // db connection에 필요한 상수 모음
 public abstract class DBConnection {
+
     //db명
     private final static String DB_NAME = "mini_project_01";
 
@@ -63,6 +64,5 @@ public abstract class DBConnection {
                 System.out.println("Close Statement Error->" + e.getMessage());
             }
         }
-
     }
 }

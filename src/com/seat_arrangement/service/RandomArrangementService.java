@@ -5,7 +5,7 @@ import java.util.Collections;
 
 
 // 랜덤으로 자리 배치하기
-public class RandomArrangementService extends ArrangementService {
+public class RandomArrangementService extends SortingArrangement implements ArrangementService {
 
     // 학생 list 랜덤으로 섞은 정렬 반환
     @Override

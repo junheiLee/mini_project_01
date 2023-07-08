@@ -1,7 +1,7 @@
 package com.seat_arrangement.repository.testRepo;
 
 import com.seat_arrangement.repository.SQLClass;
-import com.seat_arrangement.repository.repoInterface.SeatRepo;
+import com.seat_arrangement.repository.intf.SeatRepo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,14 +13,17 @@ public class SeatRepoTest extends SQLClass implements SeatRepo {
 
     private static int id = 0;
 
+    @Override
     public ArrayList<Integer> findAllUsedId() {
         return super.findAllId(SELECT_ALL_USED_ID);
     }
 
+    @Override
     public ArrayList<Integer> findAllNotUsedId() {
         return super.findAllId(SELECT_ALL_NOT_USED_ID);
     }
 
+    @Override
     public void save(int row, int column) {
 
         try {
@@ -38,6 +41,7 @@ public class SeatRepoTest extends SQLClass implements SeatRepo {
         }
     }
 
+    @Override
     // update seat set ? = ? where ? = ? and ? = ?
     public void modify(String modifyColumn, boolean modifyValue, String[] targetColumn, Integer[] targetValue) {
         try {
@@ -59,6 +63,7 @@ public class SeatRepoTest extends SQLClass implements SeatRepo {
         }
     }
 
+    @Override
     public void deleteAll() {
         this.id = 0;
         try {

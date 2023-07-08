@@ -1,7 +1,7 @@
 package com.seat_arrangement.repository.testRepo;
 
 import com.seat_arrangement.repository.SQLClass;
-import com.seat_arrangement.repository.repoInterface.ArrangementRepo;
+import com.seat_arrangement.repository.intf.ArrangementRepo;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -15,6 +15,14 @@ public class ArrangementRepoTest extends SQLClass implements ArrangementRepo {
 
     private static int idx = 0;
 
+    public ArrangementRepoTest() {
+    }
+
+    public ArrangementRepoTest(int idx) {
+        this.idx = idx;
+    }
+
+    @Override
     public Map<Integer, Integer> findById(int id) {
         Map<Integer, Integer> arrangement = new HashMap<>();
         try {
@@ -32,10 +40,6 @@ public class ArrangementRepoTest extends SQLClass implements ArrangementRepo {
             close(pstmt, rs);
         }
         return arrangement;
-    }
-
-    public static void setId(int id) {
-        idx = id;
     }
 
     // 해당 날짜의 자리 배치 정보 저장

@@ -1,6 +1,6 @@
 package com.seat_arrangement.repository;
 
-import com.seat_arrangement.repository.repoInterface.SeatRepo;
+import com.seat_arrangement.repository.intf.SeatRepo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,14 +9,17 @@ public class SeatRepoImpl extends SQLClass implements SeatRepo {
 
     private static final String INSERT_ALL = "insert into seat (seatRow, seatColumn) values (?, ?)";
 
+    @Override
     public ArrayList<Integer> findAllUsedId() {
         return super.findAllId(SELECT_ALL_USED_ID);
     }
 
+    @Override
     public ArrayList<Integer> findAllNotUsedId() {
         return super.findAllId(SELECT_ALL_NOT_USED_ID);
     }
 
+    @Override
     public void save(int row, int column) {
         try {
             pstmt = conn.prepareStatement(INSERT_ALL);
@@ -31,6 +34,7 @@ public class SeatRepoImpl extends SQLClass implements SeatRepo {
         }
     }
 
+    @Override
     // update seat set ? = ? where ? = ? and ? = ?
     public void modify(String modifyColumn, boolean modifyValue, String[] targetColumn, Integer[] targetValue) {
         try {

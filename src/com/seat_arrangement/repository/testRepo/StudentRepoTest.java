@@ -1,7 +1,8 @@
 package com.seat_arrangement.repository.testRepo;
 
+import com.seat_arrangement.DTO.StudentDTO;
 import com.seat_arrangement.repository.SQLClass;
-import com.seat_arrangement.repository.repoInterface.StudentRepo;
+import com.seat_arrangement.repository.intf.StudentRepo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,6 +19,30 @@ public class StudentRepoTest extends SQLClass implements StudentRepo {
     @Override
     public ArrayList<Integer> findAllUsedId() {
         return super.findAllId(SELECT_ALL_USED_ID);
+    }
+
+    @Override
+    public ArrayList<StudentDTO> findAll() {
+        ArrayList<StudentDTO> students = new ArrayList<>();
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(SELECT_ALL);
+            while (rs.next()) {
+                StudentDTO student = new StudentDTO();
+
+                student.setStudentId(rs.getInt("studentId"));
+                student.setName(rs.getString("studentName"));
+                student.setMbti(rs.getString("mbti"));
+                student.setSmoker(rs.getBoolean("isSmoker"));
+                students.add(student);
+            }
+        } catch (SQLException e) {
+            System.out.println(SELECT_ALL + " Error -> " + e.getMessage());
+        } finally {
+            close(stmt, rs);
+        }
+        System.out.println(students.size());
+        return students;
     }
 
     @Override
@@ -53,6 +78,7 @@ public class StudentRepoTest extends SQLClass implements StudentRepo {
         }
     }
 
+    @Override
     public void deleteAll() {
         this.id = 0;
         try {
