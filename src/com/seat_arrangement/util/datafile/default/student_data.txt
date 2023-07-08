@@ -1,30 +1,30 @@
-강동희, istp
-강민희,istp
-김경택,istp
-김민지,istp
-김정훈,istp
-김준영,istp
-김태섭, infp
-김효경,istp
-김훈호,istp
-명원식,istp
-문효주,istp
-박경리,istp
-박기철,istp
-박대일,istp
-박정민,istp
-박정우,istp
-백승주,istp
-백준철,istp
-이경승,istp
-이승준,istp
-이준희, intp
-이현수,istp
-임승연,istp
-임제정,istp
-정준형,istp
-전총명, istp
-정성현,istp
-최호준, e?t?
-한다현, entp
-한신우,istp
+강동희,ISTP,0.4
+강민희,NULL,0.7
+김경택,NULL,0.7
+김민지,INFJ,0.1
+김정훈,NULL,0.7
+김준영,INFJ,0.7
+김태섭,ISFP,1.0
+김효경,INFP,0.1
+김훈호,ISTJ,0.7
+명원식,INFP,1.5
+문효주,ISTP,0.1
+박경리,INFP,1.5
+박기철,NULL,0.7
+허찬,INTP,0.1
+박정민,ENTP,0.3
+박정우,NULL,0.7
+백승주,INFJ,0.7
+백준철,NULL,0.7
+이경승,INFP,0.1
+이승준,INFP,1.5
+이준희,INTP,1.0
+이현수,ESTJ,0.7
+임승연,INFP,1.0
+임제정,ESTP,1.0
+정준형,ESTP,0.1
+전총명,ISTP,0.3
+정성현,istp,0.7
+최호준,NULL,0.7
+한다현,ENTP,0.7
+한신우,ISFP,1.0
