@@ -24,6 +24,9 @@ public class DetailHTMLMaker extends HTMLMaker implements HTMLTag {
             File file = new File(i + 1 + ".html");
 
             content += PRE_DETAIL_FRAME;
+            content += OPEN_H2;
+            content += students.get(i).getName();
+            content += CLOSE_H2;
             content += OPEN_UL;
             content += (OPEN_LI + students.get(i).getMbti() + CLOSE_LI);
             if (students.get(i).isSmoker()) {

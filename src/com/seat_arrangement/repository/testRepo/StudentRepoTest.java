@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class StudentRepoTest extends SQLClass implements StudentRepo {
 
-    private static final String INSERT_ALL = "insert into student (studentId, studentName, mbti) values (?, ?, ?)";
+    private static final String INSERT_ALL = "insert into student (studentId, studentName, mbti, vision) values (?, ?, ?, ?)";
     private static final String DELETE_ALL = "delete from student";
     private static int id = 0;
 
@@ -46,13 +46,14 @@ public class StudentRepoTest extends SQLClass implements StudentRepo {
     }
 
     @Override
-    public void save(String name, String mbti) {
+    public void save(String name, String mbti, float vision) {
         try {
             this.id++;
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setInt(1, this.id);
             pstmt.setString(2, name);
             pstmt.setString(3, mbti);
+            pstmt.setFloat(4, vision);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class StudentRepoImpl extends SQLClass implements StudentRepo {
 
-    private static final String INSERT_ALL = "insert into student (studentName, mbti) values (?, ?)";
+    private static final String INSERT_ALL = "insert into student (studentName, mbti, vision) values (?, ?, ?)";
 
     public StudentRepoImpl() {
     }
@@ -43,11 +43,12 @@ public class StudentRepoImpl extends SQLClass implements StudentRepo {
     }
 
     @Override
-    public void save(String name, String mbti) {
+    public void save(String name, String mbti, float vision) {
         try {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setString(1, name);
             pstmt.setString(2, mbti);
+            pstmt.setFloat(3, vision);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

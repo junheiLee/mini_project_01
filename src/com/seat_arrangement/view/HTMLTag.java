@@ -28,6 +28,9 @@ public interface HTMLTag {
     String OPEN_TD = "<td>";
     String CLOSE_TD = "</td>";
 
+    String OPEN_H2 = "<h2>";
+    String CLOSE_H2 = "</h2>";
+
     String OPEN_UL = "<ul>";
     String CLOSE_UL = "</ul>";
 

@@ -22,7 +22,7 @@ public class DefaultUploader extends FileUploader {
 
         for (String each : list) {
             eachInfo = each.split(INFO_REGEX);
-            studentRepo.save(eachInfo[0].trim(), eachInfo[1].trim());
+            studentRepo.save(eachInfo[0], eachInfo[1], Float.parseFloat(eachInfo[2]));
         }
     }
 
