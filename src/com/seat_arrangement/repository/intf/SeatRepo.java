@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface SeatRepo {
 
-    String SELECT_ALL= "select * from seat";
+    String SELECT_ALL = "select * from seat";
     String SELECT_ALL_NOT_USED_ID = "select seatId from seat where isUsed = false";
     String UPDATE_BY_PROCESSION = "update seat set isUsed = ? where seatRow = ? and seatColumn = ?";
     String DELETE_ALL = "delete from seat";

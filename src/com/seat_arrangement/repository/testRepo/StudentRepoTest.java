@@ -1,13 +1,13 @@
 package com.seat_arrangement.repository.testRepo;
 
 import com.seat_arrangement.DTO.StudentDTO;
-import com.seat_arrangement.repository.SQLClass;
+import com.seat_arrangement.repository.connection.DBConnection;
 import com.seat_arrangement.repository.intf.StudentRepo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class StudentRepoTest extends SQLClass implements StudentRepo {
+public class StudentRepoTest extends DBConnection implements StudentRepo {
 
     private static final String INSERT_ALL = "insert into student (studentId, studentName, mbti, vision) values (?, ?, ?, ?)";
     private static final String DELETE_ALL = "delete from student";

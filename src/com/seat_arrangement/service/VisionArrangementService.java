@@ -25,17 +25,17 @@ public class VisionArrangementService extends SortingArrangement implements Arra
     }
 
     private ArrayList<Integer> sortByVision(Map<Integer, Float> visionById) {
-        ArrayList<Integer>  studentIdsInOrder = new ArrayList<>();
+        ArrayList<Integer> studentIdsInOrder = new ArrayList<>();
         visionById.put(-1, 99.0f); // 같은 시력인 사람끼리 shuffle 하기 위한 작업
 
         List<Map.Entry<Integer, Float>> entryList = new LinkedList<>(visionById.entrySet());
         entryList.sort(Map.Entry.comparingByValue());
         ArrayList<Integer> sameVision = new ArrayList<>();
 
-        for (int i = 0; i < visionById.size()-1; i++) {
+        for (int i = 0; i < visionById.size() - 1; i++) {
             sameVision.add(entryList.get(i).getKey());
 
-            if(entryList.get(i).getValue().floatValue() != entryList.get(i+1).getValue().floatValue()){
+            if (entryList.get(i).getValue().floatValue() != entryList.get(i + 1).getValue().floatValue()) {
                 Collections.shuffle(sameVision);
                 studentIdsInOrder.addAll(sameVision);
                 sameVision.clear();

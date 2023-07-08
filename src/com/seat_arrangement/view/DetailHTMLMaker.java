@@ -21,7 +21,7 @@ public class DetailHTMLMaker extends HTMLMaker implements HTMLTag {
         System.out.println(length);
 
         for (int i = 0; i < length; i++) {
-            File file = new File( students.get(i).getStudentId() + ".html");
+            File file = new File(students.get(i).getStudentId() + ".html");
 
             content += PRE_DETAIL_FRAME;
             content += OPEN_H2;

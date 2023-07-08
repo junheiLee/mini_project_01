@@ -10,6 +10,9 @@ public abstract class DBConnection {
     public static final String USERNAME = "sa";
     public static final String PASSWORD = "";
 
+    protected static Statement stmt = null;
+    protected static PreparedStatement pstmt = null;
+    protected static ResultSet rs = null;
     protected static Connection conn = null;
 
     public DBConnection() {

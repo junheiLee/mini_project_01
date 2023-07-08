@@ -1,13 +1,13 @@
 package com.seat_arrangement.repository.testRepo;
 
 import com.seat_arrangement.DTO.SeatDTO;
-import com.seat_arrangement.repository.SQLClass;
+import com.seat_arrangement.repository.connection.DBConnection;
 import com.seat_arrangement.repository.intf.SeatRepo;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class SeatRepoTest extends SQLClass implements SeatRepo {
+public class SeatRepoTest extends DBConnection implements SeatRepo {
 
     private static final String INSERT_ALL = "insert into seat (seatId, seatRow, seatColumn) values (?, ?, ?)";
     private static final String DELETE_ALL = "delete from seat";
@@ -59,7 +59,7 @@ public class SeatRepoTest extends SQLClass implements SeatRepo {
         return seatIds;
     }
 
-    public ArrayList<Integer> countUsedByRow(){
+    public ArrayList<Integer> countUsedByRow() {
         ArrayList<Integer> rows = new ArrayList<>();
         try {
             stmt = conn.createStatement();
@@ -74,7 +74,7 @@ public class SeatRepoTest extends SQLClass implements SeatRepo {
         } finally {
             close(stmt, rs);
         }
-        return  rows;
+        return rows;
     }
 
     @Override

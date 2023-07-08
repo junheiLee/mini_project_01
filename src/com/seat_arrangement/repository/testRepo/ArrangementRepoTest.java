@@ -1,6 +1,6 @@
 package com.seat_arrangement.repository.testRepo;
 
-import com.seat_arrangement.repository.SQLClass;
+import com.seat_arrangement.repository.connection.DBConnection;
 import com.seat_arrangement.repository.intf.ArrangementRepo;
 
 import java.sql.Date;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ArrangementRepoTest extends SQLClass implements ArrangementRepo {
+public class ArrangementRepoTest extends DBConnection implements ArrangementRepo {
     private static final String INSERT_ALL = "insert into arrangement (id, arrangeDate, seatId, studentId) values (?, curdate(), ?, ?)";
     private static final String SELECT_BY_DATE = "select seatId, studentId from arrangement where arrangeDate = ?";
     private static final String SELECT_BY_ID = "select seatId, studentId from arrangement where id = ?";
