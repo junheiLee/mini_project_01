@@ -59,6 +59,24 @@ public class SeatRepoTest extends SQLClass implements SeatRepo {
         return seatIds;
     }
 
+    public ArrayList<Integer> countUsedByRow(){
+        ArrayList<Integer> rows = new ArrayList<>();
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery("select count(*) from seat where isUsed=true group by seatRow");
+
+            while (rs.next()) {
+                rows.add(rs.getInt(1));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(SELECT_ALL_NOT_USED_ID + " Error -> " + e.getMessage());
+        } finally {
+            close(stmt, rs);
+        }
+        return  rows;
+    }
+
     @Override
     public void save(int row, int column) {
 

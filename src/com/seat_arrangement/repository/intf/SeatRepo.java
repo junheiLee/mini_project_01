@@ -15,6 +15,9 @@ public interface SeatRepo {
 
     ArrayList<Integer> findAllNotUsedId();
 
+    // 한 줄당 사용하는 좌석 개수 반환 - 줄당 랜덤 시 사용
+    ArrayList<Integer> countUsedByRow();
+
     // 자리 데이터 저장 - init() 에 사용
     void save(int row, int column);
 

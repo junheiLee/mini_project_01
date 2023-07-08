@@ -1,28 +1,26 @@
 package com.seat_arrangement.controller;
 
+
 import com.seat_arrangement.DTO.StudentDTO;
-import com.seat_arrangement.repository.ArrangementRepoImpl;
-import com.seat_arrangement.repository.SeatRepoImpl;
-import com.seat_arrangement.repository.StudentRepoImpl;
+import com.seat_arrangement.repository.*;
+import com.seat_arrangement.repository.intf.*;
 import com.seat_arrangement.repository.connection.DBConnection;
-import com.seat_arrangement.repository.intf.ArrangementRepo;
-import com.seat_arrangement.repository.intf.SeatRepo;
-import com.seat_arrangement.repository.intf.StudentRepo;
-import com.seat_arrangement.service.ArrangementService;
-import com.seat_arrangement.service.RandomArrangementService;
-import com.seat_arrangement.util.upload.DefaultUploader;
-import com.seat_arrangement.util.upload.SupplementUploader;
+
+import com.seat_arrangement.service.*;
+
 import com.seat_arrangement.view.DetailHTMLMaker;
 import com.seat_arrangement.view.SeatArrangementHTMLMaker;
 
+import com.seat_arrangement.util.upload.*;
+
+
 import java.util.ArrayList;
 
-import static com.seat_arrangement.util.ArrangeInfo.EMPTY_SEAT;
 import static com.seat_arrangement.util.ArrangeInfo.TODAY;
 
-public class MainController implements SeatArrangementController {
+public class MainController implements SeatArrangementController{
 
-    private final ArrangementService service = new RandomArrangementService();
+    private final ArrangementService service = new VisionArrangementService();
 
     private final ArrangementRepo arrangementRepo = new ArrangementRepoImpl();
     private final StudentRepo studentRepo = new StudentRepoImpl();
@@ -38,7 +36,6 @@ public class MainController implements SeatArrangementController {
         initInfo();
         arrange();
         createHTML(0);
-        DBConnection.close();
     }
 
     @Override
@@ -53,7 +50,7 @@ public class MainController implements SeatArrangementController {
     public void setUnused() {
         ArrayList<Integer> unusedSeats = seatRepo.findAllNotUsedId();
         for (int i = 0; i < unusedSeats.size(); i++) {
-            this.arrangedStudents.add(EMPTY_SEAT);
+            this.arrangedStudents.add(0);
         }
         this.arrangedSeats.addAll(unusedSeats);
     }
@@ -61,7 +58,7 @@ public class MainController implements SeatArrangementController {
     @Override
     public void arrange() {
         // 자리와 학생 정렬
-        this.arrangedStudents.addAll(service.arrangeStudent(studentRepo.findAllInProgress()));
+        this.arrangedStudents.addAll(service.randomByRow(service.arrangeStudent(studentRepo.findAllInProgress()), seatRepo.countUsedByRow()));
         this.arrangedSeats.addAll(service.arrangeSeat(seatRepo.findAllUsed()));
 
         // 해당 순서대로 arrangement db에 정보 저장
@@ -76,6 +73,7 @@ public class MainController implements SeatArrangementController {
         this.sortedStudentIds = service.sortBySeat(arrangementRepo.findByDate(TODAY)); //controller list에 저장
 
         ArrayList<StudentDTO> students = studentRepo.findAllInProgress();
+        DBConnection.close();
         DetailHTMLMaker.create(students);
         SeatArrangementHTMLMaker.create(sortedStudentIds);
     }
