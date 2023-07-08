@@ -4,6 +4,7 @@ public class StudentDTO {
     private int studentId;
     private String name;
     private String mbti;
+    private float vision;
     private boolean isSmoker;
 
     public int getStudentId() {
@@ -28,6 +29,14 @@ public class StudentDTO {
 
     public void setMbti(String mbti) {
         this.mbti = mbti;
+    }
+
+    public float getVision() {
+        return vision;
+    }
+
+    public void setVision(float vision) {
+        this.vision = vision;
     }
 
     public boolean isSmoker() {

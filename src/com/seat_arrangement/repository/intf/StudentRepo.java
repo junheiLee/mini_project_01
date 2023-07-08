@@ -11,11 +11,8 @@ public interface StudentRepo {
     String UPDATE_BY_ID = "update student set ? = ? where ? = ?";
     String DELETE_ALL = "delete from student";
 
-    // 수강중인 학생 DTO 반환
-    ArrayList<StudentDTO> findAll();
-
     // 모든 현재 수강중인 학생 id 반환
-    ArrayList<Integer> findAllUsedId();
+    ArrayList<StudentDTO> findAllInProgress();
 
     // 학생 데이터 저장 - init() 에 사용
     void save(String name, String mbti, float vision);

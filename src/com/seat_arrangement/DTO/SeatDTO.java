@@ -4,7 +4,6 @@ public class SeatDTO {
     private int seatId;
     private int column;
     private int row;
-    private boolean isUsed;
 
     public int getSeatId() {
         return seatId;
@@ -30,11 +29,4 @@ public class SeatDTO {
         this.row = row;
     }
 
-    public boolean isUsed() {
-        return isUsed;
-    }
-
-    public void setUsed(boolean used) {
-        isUsed = used;
-    }
 }

@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Map;
 
 public abstract class SortingArrangement {
+
+    // key(seatId)기준 value(studentId) 정렬 후 list 반환
     public ArrayList<Integer> sortBySeat(Map<Integer, Integer> arrangements) {
         ArrayList<Integer> sortedStudents = new ArrayList<>();
         ArrayList<Integer> keySet = new ArrayList<>(arrangements.keySet());

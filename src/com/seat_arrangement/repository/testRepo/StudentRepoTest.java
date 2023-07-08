@@ -17,22 +17,18 @@ public class StudentRepoTest extends SQLClass implements StudentRepo {
     }
 
     @Override
-    public ArrayList<Integer> findAllUsedId() {
-        return super.findAllId(SELECT_ALL_USED_ID);
-    }
-
-    @Override
-    public ArrayList<StudentDTO> findAll() {
+    public ArrayList<StudentDTO> findAllInProgress() {
         ArrayList<StudentDTO> students = new ArrayList<>();
         try {
             stmt = conn.createStatement();
-            rs = stmt.executeQuery(SELECT_ALL);
+            rs = stmt.executeQuery(SELECT_ALL + " where isInProgress = true");
             while (rs.next()) {
                 StudentDTO student = new StudentDTO();
 
                 student.setStudentId(rs.getInt("studentId"));
                 student.setName(rs.getString("studentName"));
                 student.setMbti(rs.getString("mbti"));
+                student.setVision(rs.getFloat("vision"));
                 student.setSmoker(rs.getBoolean("isSmoker"));
                 students.add(student);
             }

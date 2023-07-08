@@ -1,16 +1,17 @@
 package com.seat_arrangement.repository.intf;
 
+import com.seat_arrangement.DTO.SeatDTO;
+
 import java.util.ArrayList;
 
 public interface SeatRepo {
 
-    String SELECT_ALL_ID = "select seatId from seat";
-    String SELECT_ALL_USED_ID = SELECT_ALL_ID + " where isUsed = true";
-    String SELECT_ALL_NOT_USED_ID = SELECT_ALL_ID + " where isUsed = false";
+    String SELECT_ALL= "select * from seat";
+    String SELECT_ALL_NOT_USED_ID = "select seatId from seat where isUsed = false";
     String UPDATE_BY_PROCESSION = "update seat set isUsed = ? where seatRow = ? and seatColumn = ?";
     String DELETE_ALL = "delete from seat";
 
-    ArrayList<Integer> findAllUsedId();
+    ArrayList<SeatDTO> findAllUsed();
 
     ArrayList<Integer> findAllNotUsedId();
 

@@ -61,8 +61,8 @@ public class MainController implements SeatArrangementController {
     @Override
     public void arrange() {
         // 자리와 학생 정렬
-        this.arrangedStudents.addAll(service.arrangeStudent(studentRepo.findAllUsedId()));
-        this.arrangedSeats.addAll(service.arrangeSeat(seatRepo.findAllUsedId()));
+        this.arrangedStudents.addAll(service.arrangeStudent(studentRepo.findAllInProgress()));
+        this.arrangedSeats.addAll(service.arrangeSeat(seatRepo.findAllUsed()));
 
         // 해당 순서대로 arrangement db에 정보 저장
         for (int idx = 0; idx < arrangedStudents.size(); idx++) {
@@ -75,7 +75,7 @@ public class MainController implements SeatArrangementController {
         this.sortedStudentIds.clear(); // controller의 list init
         this.sortedStudentIds = service.sortBySeat(arrangementRepo.findByDate(TODAY)); //controller list에 저장
 
-        ArrayList<StudentDTO> students = studentRepo.findAll();
+        ArrayList<StudentDTO> students = studentRepo.findAllInProgress();
         DetailHTMLMaker.create(students);
         SeatArrangementHTMLMaker.create(sortedStudentIds);
     }

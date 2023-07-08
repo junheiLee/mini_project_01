@@ -51,8 +51,8 @@ public class TestController implements SeatArrangementController {
 
     @Override
     public void arrange() {
-        this.arrangedStudents.addAll(service.arrangeStudent(studentRepo.findAllUsedId()));
-        this.arrangedSeats.addAll(service.arrangeSeat(seatRepo.findAllUsedId()));
+        this.arrangedStudents.addAll(service.arrangeStudent(studentRepo.findAllInProgress()));
+        this.arrangedSeats.addAll(service.arrangeSeat(seatRepo.findAllUsed()));
 
         for (int idx = 0; idx < arrangedStudents.size(); idx++) {
             arrangementRepo.save(this.arrangedSeats.get(idx), this.arrangedStudents.get(idx));
@@ -73,7 +73,7 @@ public class TestController implements SeatArrangementController {
         this.sortedStudentIds.clear(); // controller의 list init
         this.sortedStudentIds = service.sortBySeat(arrangementRepo.findById(id)); //controller list에 저장
 
-        ArrayList<StudentDTO> students = studentRepo.findAll();
+        ArrayList<StudentDTO> students = studentRepo.findAllInProgress();
         DetailHTMLMaker.create(students);
         SeatArrangementHTMLMaker.create(sortedStudentIds);
     }

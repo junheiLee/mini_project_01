@@ -18,23 +18,4 @@ public abstract class SQLClass extends DBConnection {
     public SQLClass() {
     }
 
-    // 모든 id 반환
-    public ArrayList<Integer> findAllId(String sql) {
-        ArrayList<Integer> seatIds = new ArrayList<>();
-        try {
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(sql);
-
-            while (rs.next()) {
-                seatIds.add(rs.getInt(1));
-            }
-            return seatIds;
-
-        } catch (SQLException e) {
-            System.out.println(sql + " Error -> " + e.getMessage());
-        } finally {
-            close(stmt, rs);
-        }
-        return seatIds;
-    }
 }
