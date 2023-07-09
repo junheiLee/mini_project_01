@@ -1,6 +1,6 @@
 > datafile
     > default
-        > seat_data.txt
+        - seat_data.txt
           자리 데이터
                             (     앞     )
               (1, 1) (1, 2)     (1, 3) (1, 4) (1, 5) (1, 6)
@@ -10,6 +10,9 @@
               (5, 1) (5, 2)     (5, 3) (5, 4) (5, 5) (5, 6)
               (6, 1) (6, 2)     (6, 3) (6, 4) (6, 5) (6, 6)
 
+        - student_data.txt
+          학생 데이터
+            이름, mbti, 시력
         > supplement
             > seat_not_used_row_column.txt
               - 사용하지 않는 자리 정보
@@ -20,7 +23,3 @@
 
     > images
       - 자리 배치 화면의 이미지
-    > result
-      - 완성된 자리 배치도 .html 저장 경로
-        > details
-          - 생성한 각 학생 정보 .html 저장 경로
