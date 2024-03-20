@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class StudentRepoImpl extends DBConnection implements StudentRepo {
 
-    private static final String INSERT_ALL = "insert into student (studentName, mbti) values (?, ?)";
+    private static final String INSERT_ALL = "insert into student (studentName, mbti, vision) values (?, ?, ?)";
 
     public StudentRepoImpl() {
     }
@@ -26,7 +26,7 @@ public class StudentRepoImpl extends DBConnection implements StudentRepo {
                 student.setStudentId(rs.getInt("studentId"));
                 student.setName(rs.getString("studentName"));
                 student.setMbti(rs.getString("mbti"));
-//                student.setVision(rs.getFloat("vision"));
+                student.setVision(rs.getFloat("vision"));
                 student.setSmoker(rs.getBoolean("isSmoker"));
                 students.add(student);
             }
@@ -45,7 +45,7 @@ public class StudentRepoImpl extends DBConnection implements StudentRepo {
             pstmt = conn.prepareStatement(INSERT_ALL);
             pstmt.setString(1, name);
             pstmt.setString(2, mbti);
-//            pstmt.setFloat(3, vision);
+            pstmt.setFloat(3, vision);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
