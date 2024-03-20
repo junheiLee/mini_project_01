@@ -1,7 +1,7 @@
 # 🚀프로젝트 정보
 ## 📌 과제
 ### 필수 포함
-- MySQL 사용
+- RDBMS 사용
 - Java(Thread, Collection, Inheritance) 적용
 - HTML(html 파일 생성, 이미지, 링크)
 ### 기간
@@ -31,7 +31,7 @@ IntelliJ, Java 11, MySQL
 
 # 🤯 고민한 점
 - **Java 코드의 변경 없이** text 설정 파일의 변경만으로 다양한 좌석에서 다양한 배치를 적용할 수 있어야 합니다.
-  - **하드 코딩을 금지**하고, text 파일 정보 파싱을 통해 배치와 html 생성에 필요한 숫자를 뽑아내어 구현했습니다.
+  - **하드 코딩을 금지**하고, text 파일 정보로 배치와 html 생성에 필요한 개수를 뽑아 구현했습니다.
   - **인터페이스**로 좌석 배치에 필요한 기능을 강제하고, **구현체의 변경** 만으로 일반 랜덤 배치와 시력 별 랜덤 배치를 선택할 수 있도록 구현했습니다.
 
 # 🔆 빌드
@@ -46,23 +46,23 @@ IntelliJ, Java 11, MySQL
 (6, 1) (6, 2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(6, 3) (6, 4) (6, 5) (6, 6)<br>
 
 
+📂 til/datafile/default/suppliment<br>
+&nbsp;&nbsp;&nbsp;📄 seat_not_used_row_column.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;사용하지 않는 자리의 정보를 입력합니다.<br>
+&nbsp;&nbsp;&nbsp;📄 student_isSmoker_id.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;흡연자의 출석 번호를 입력합니다.<br>
+&nbsp;&nbsp;&nbsp;📄 student_not_inProgress_id.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;탈주한 학생의 출석 번호를 입력합니다.<br>
 📂 util/datafile/default<br>
-📂 suppliment<br>
-📄 seat_not_used_row_column.txt<br>
-사용하지 않는 자리의 정보를 입력합니다.<br>
-📄 student_isSmoker_id.txt<br>
-흡연자의 출석 번호를 입력합니다.<br>
-📄 student_not_inProgress_id.txt<br>
-탈주한 학생의 출석 번호를 입력합니다.<br>
-📄 seat_data.txt<br>
-직사각형의 형태가 되는 좌석 정보를 입력합니다.<br>
-📄 student_data.txt<br>
-학생 정보를 이름, MBTI, 시력 순으로 입력합니다.
+&nbsp;&nbsp;&nbsp;📄 seat_data.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;직사각형의 형태가 되는 좌석 정보를 입력합니다.<br>
+&nbsp;&nbsp;&nbsp;📄 student_data.txt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;학생 정보를 이름, MBTI, 시력 순으로 입력합니다.
 
 📂  util/datafile/images<br>
-🏞 0.png<br>
-🏞 1.png<br>
-🏞 2.png<br>
-...<br>
-0번은 빈 좌석에 해당하는 이미지, 외에는 출석 번호에 해당하는 학생의 이미지를 저장합니다.
+&nbsp;&nbsp;&nbsp;🏞 0.png<br>
+&nbsp;&nbsp;&nbsp;🏞 1.png<br>
+&nbsp;&nbsp;&nbsp;🏞 2.png<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0번은 빈 좌석에 해당하는 이미지, 외에는 출석 번호에 해당하는 학생의 이미지를 저장합니다.
 
