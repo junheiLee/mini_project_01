@@ -1,7 +1,7 @@
 package main.java.seat_arrangement.DTO;
 
 public class SeatDTO {
-    
+
     private int seatId;
 
     public int getSeatId() {
